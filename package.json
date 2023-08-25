@@ -14,7 +14,8 @@
     "watch:scss": "sass --watch src/main.scss:src/index.css",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@mui/material": "^5.11.10",
@@ -37,6 +38,7 @@
     "eslint": "^8.48.0",
     "eslint-plugin-react": "^7.33.2",
     "gh-pages": "^5.0.0",
+    "husky": "^8.0.3",
     "install": "^0.13.0",
     "npm": "^9.8.1",
     "prettier": "^3.0.2",
