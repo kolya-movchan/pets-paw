@@ -15,7 +15,17 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged",
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      }
+    },
+    "lint-staged": {
+      "*.{js,jsx,ts,tsx}": ["eslint --fix", "git add"],
+      "*.{json,md}": ["prettier --write", "git add"]
+    }
   },
   "dependencies": {
     "@mui/material": "^5.11.10",
