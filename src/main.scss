@@ -1,7 +1,9 @@
 @import './styles/reset.scss';
+@import './styles/variables';
+@import './styles/placeholder.scss';
+@import './styles/page.scss';
 
-@import './components/Navigation/Navigation.scss';
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap');
 
-body {
-  background-color: pink;
-}
+@import './App.scss';
+@import './features/HomePage/HomePage.scss';

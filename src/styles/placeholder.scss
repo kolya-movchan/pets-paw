@@ -1,0 +1,29 @@
+%flex-cl {
+  display: flex;
+  flex-direction: column;
+}
+
+%all-centered {
+  justify-content: center;
+  align-items: center;
+}
+
+%flex-cl-centered-full {
+  @extend %flex-cl;
+  @extend %all-centered;
+}
+
+%flex-rw-centered-scnd {
+  display: flex;
+  align-items: center;
+}
+
+%flex-rw-centered-x {
+  display: flex;
+  justify-content: center;
+}
+
+%flex-rw-centered-full {
+  display: flex;
+  @extend %all-centered;
+}
