@@ -27,3 +27,8 @@
   display: flex;
   @extend %all-centered;
 }
+
+%bg-img {
+  background-repeat: no-repeat;
+  background-position: center;
+}

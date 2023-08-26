@@ -1,0 +1,25 @@
+.voting-hero-container {
+  height: 360px;
+  border-radius: 20px;
+  overflow: hidden; 
+}
+
+.voting-container {
+  position: relative;
+}
+
+.voting-hero {
+  @extend %flex-rw-centered-full;
+  max-height: 100%;
+}
+
+.hero-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 20px;
+
+  // object-fit: contain;
+  // object-position: center;
+}

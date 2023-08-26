@@ -1,0 +1,13 @@
+.voting {
+  @extend %flex-cl;
+  height: 100%;
+  padding: 20px;
+}
+
+.voting-container {
+  @extend %flex-cl;
+  // height: 100%;
+  // width: 100%;
+  background-color: $white-color;
+  border-radius: 20px;
+}

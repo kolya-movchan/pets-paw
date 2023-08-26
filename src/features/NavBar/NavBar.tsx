@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLinkItem } from '../../components/NavLinkItem'
+import { NavLinkItem } from '../../components/NavLinkItem/NavLinkItem'
 import { ColorNavIcon } from '../../types/Color'
 
 export const NavBar = () => {

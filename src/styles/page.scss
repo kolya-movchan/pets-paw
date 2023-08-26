@@ -1,6 +1,6 @@
 body {
   font-family: 'Jost';
-  background-color: #F8F8F7;;
+  background-color: #f8f8f7;
 }
 
 .title {
@@ -9,4 +9,11 @@ body {
 
 .text {
   font-weight: 400;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
