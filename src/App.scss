@@ -1,14 +1,8 @@
 .app {
   display: flex;
-  height: 100vh;
-  // max-height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   justify-content: space-between;
   padding: 30px;
   padding-left: 147px;
-}
-
-.dynamic-board {
-  flex-basis: 50%;
-  height: 100%;
 }

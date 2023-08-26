@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { testSlice } from '../reducers/darkMode';
+import { historySlice } from '../reducers/HistoryLog';
 
 export const store = configureStore({
   reducer: {
-    darkMode: testSlice.reducer
+    historyLog: historySlice.reducer
   },
 });
 

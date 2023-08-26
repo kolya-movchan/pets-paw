@@ -1,3 +1,8 @@
+%bg-img {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 %flex-cl {
   display: flex;
   flex-direction: column;
@@ -26,9 +31,4 @@
 %flex-rw-centered-full {
   display: flex;
   @extend %all-centered;
-}
-
-%bg-img {
-  background-repeat: no-repeat;
-  background-position: center;
 }

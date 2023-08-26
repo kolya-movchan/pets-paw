@@ -97,3 +97,19 @@
     background-color: $red-main-color;
   }
 }
+
+.active-top-link-like .top-nav-link--like {
+  background-image: url('../../../public//graphics/like-white-30.svg');
+  background-color: $red-main-color;
+}
+
+
+.active-top-link-fav .top-nav-link--favorites {
+  background-image: url('../../../public//graphics/fav-white-30.svg');
+  background-color: $red-main-color;
+}
+
+.active-top-link-dislike .top-nav-link--dislike {
+  background-image: url('../../../public//graphics/dislike-white-30.svg');
+  background-color: $red-main-color;
+}

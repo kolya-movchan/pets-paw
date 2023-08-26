@@ -5,6 +5,7 @@
   &__left-container {
     @extend %flex-cl;
     gap: 85px;
+    flex-grow: 1;
   }
 
   &__title {

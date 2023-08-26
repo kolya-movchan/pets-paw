@@ -1,49 +1,56 @@
-const BASE_URL = 'https://api.thecatapi.com/v1/';
-const userID = '890a8f581ddcffe2a0dee4227943b8a3';
+import { toast } from "react-toastify"
+
+const BASE_URL = 'https://api.thecatapi.com/v1/'
+const userID = '890a8f581ddcffe2a0dee4227943b8a3'
+const apiKey = import.meta.env.VITE_API_KEY
 
 function wait(delay: number) {
   return new Promise(resolve => {
-    setTimeout(resolve, delay);
-  });
+    setTimeout(resolve, delay)
+  })
 }
 
-type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT';
-type Data = null;
+type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT'
+type Data = null | {}
 
 function request<T>(
   url: string,
   method: RequestMethod = 'GET',
-  data: Data = null,
+  data: Data = null
 ): Promise<T> {
-  const options: RequestInit = { method };
+  const options: RequestInit = { method }
 
   if (data) {
-    options.body = JSON.stringify(data);
+    console.log(data, url)
+    options.body = JSON.stringify({ ...data, sub_id: userID })
     options.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
-    };
+      'x-api-key': `${apiKey}`
+    }
   }
 
   return wait(300)
     .then(() => fetch(BASE_URL + url, options))
     .then(response => {
       if (!response.ok) {
-        throw new Error();
+        toast.error('Something went wrong')
+
+        throw new Error()
       }
 
-      return response.json();
-    });
+      return response.json()
+    })
 }
 
 export const item = {
   get: function <T>(url: string) {
-    return request<T>(url);
+    return request<T>(url)
   },
   post: function <T>(url: string, data: Data) {
-    return request<T>(url, 'POST', data);
-  },
+    return request<T>(url, 'POST', data)
+  }
   // delete: (url: string) => request(url, 'DELETE'),
   // put: function<T>(url: string, data?: CFPforUpdate) {
   //   return request<T>(url, 'PUT', data);
   // },
-};
+}

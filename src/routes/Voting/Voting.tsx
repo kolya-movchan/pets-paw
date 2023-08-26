@@ -4,7 +4,7 @@ import VotingBoard from '../../features/VotingBoard/VotingBoard'
 
 export const Voting = () => {
   return (
-    <div className="voting">
+    <div className="side-container-menu">
       <TopNavBar />
       <VotingBoard />
     </div>
