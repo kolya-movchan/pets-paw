@@ -37,7 +37,7 @@ export const ImpressionController: React.FC<Props> = ({
       <div className="impression">
         <button
           className="impression-mode impression-mode--dislike"
-          onClick={() => addToDislikes(setRandomCat, randomCat.id, dispatch)}
+          onClick={() => addToDislikes(setRandomCat, randomCat, dispatch)}
         ></button>
       </div>
     </div>

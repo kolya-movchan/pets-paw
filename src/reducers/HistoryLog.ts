@@ -1,17 +1,28 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface History {
-  historyLog: ImpressionLog[],
+  historyLog: ImpressionLog[]
 }
 
 interface ImpressionLog {
-  id: string,
-  time: string,
-  message: string,
+  id: string
+  type: string,
+  status: string,
+  time: string
 }
 
 const initialState: History = {
   historyLog: [],
+}
+
+
+
+const getCurrentTime = () => {
+  return new Date().toLocaleString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  })
 }
 
 export const historySlice = createSlice({
@@ -19,54 +30,56 @@ export const historySlice = createSlice({
   initialState,
   reducers: {
     addLike: (state: History, action: PayloadAction<string>) => {
-      state.historyLog.push({
+      state.historyLog.unshift({
         id: action.payload,
-        time: new Date().toLocaleString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false
-        }),        message: `Likes`,
+        type: 'Likes',
+        status: 'added',
+        time: getCurrentTime(),
       })
     },
     addFav: (state: History, action: PayloadAction<string>) => {
-      state.historyLog.push({
+      state.historyLog.unshift({
         id: action.payload,
-        time: new Date().toLocaleString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false
-        }),
-        message: `Favorites`,
+        type: 'Favourites',
+        status: 'added',
+        time: getCurrentTime(),
       })
     },
 
     addDislike: (state: History, action: PayloadAction<string>) => {
-      state.historyLog.push({
+      state.historyLog.unshift({
         id: action.payload,
-        time: new Date().toLocaleString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false
-        }),        message: `Dislikes`,
+        type: 'Dislikes',
+        status: 'added',
+        time: getCurrentTime(),
       })
     },
+
+    removeFav: (state: History, action: PayloadAction<string>) => {
+      state.historyLog.unshift({
+        id: action.payload,
+        type: 'Favourites',
+        status: 'removed',
+        time: getCurrentTime(),
+      })
+    }
     // removeLike: (state: History, action: PayloadAction<string>) => {
     //   switch (action.payload) {
     //     case 'removelike':
-    //       state.historyLog.push(
+    //       state.historyLog.unshift(
     //         `Image ID: ${action.payload} was removed from Likes`
     //       )
     //       break
 
     //     case 'removefav':
-    //       state.historyLog.push(
+    //       state.historyLog.unshift(
     //         `Image ID: ${action.payload} was removed from Favorites`
     //       )
 
     //       break
 
     //     case 'removelike':
-    //       state.historyLog.push(
+    //       state.historyLog.unshift(
     //         `Image ID: ${action.payload} was removed from Dislikes`
     //       )
 
@@ -79,6 +92,6 @@ export const historySlice = createSlice({
   }
 })
 
-export const { addLike, addFav, addDislike } = historySlice.actions
+export const { addLike, addFav, addDislike, removeFav } = historySlice.actions
 
 export default historySlice.reducer

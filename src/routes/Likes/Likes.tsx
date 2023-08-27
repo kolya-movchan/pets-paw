@@ -18,7 +18,7 @@ export const Likes = () => {
     }
   }, [])
 
-  console.log(likedCatsFromStorage)
+  // console.log(likedCatsFromStorage)
 
   return (
     <div className="side-container-menu">
@@ -27,7 +27,7 @@ export const Likes = () => {
         <LabelNav label="likes" />
 
         {likedCatsFromStorage.length > 1 ? (
-          <div className="parent">
+          <div className="grid">
             {likedCatsFromStorage?.map((cat, index) => {
               return (
                 <div key={uuidv()} className={`cat${index + 1} cat`}>

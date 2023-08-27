@@ -1,4 +1,4 @@
-import { toast } from "react-toastify"
+import { toast } from 'react-toastify'
 
 const BASE_URL = 'https://api.thecatapi.com/v1/'
 const userID = '890a8f581ddcffe2a0dee4227943b8a3'
@@ -20,13 +20,14 @@ function request<T>(
 ): Promise<T> {
   const options: RequestInit = { method }
 
+  options.headers = {
+    'Content-Type': 'application/json; charset=UTF-8',
+    'x-api-key': `${apiKey}`
+  }
+
   if (data) {
     console.log(data, url)
     options.body = JSON.stringify({ ...data, sub_id: userID })
-    options.headers = {
-      'Content-Type': 'application/json; charset=UTF-8',
-      'x-api-key': `${apiKey}`
-    }
   }
 
   return wait(300)
@@ -48,8 +49,8 @@ export const item = {
   },
   post: function <T>(url: string, data: Data) {
     return request<T>(url, 'POST', data)
-  }
-  // delete: (url: string) => request(url, 'DELETE'),
+  },
+  delete: (url: string) => request(url, 'DELETE')
   // put: function<T>(url: string, data?: CFPforUpdate) {
   //   return request<T>(url, 'PUT', data);
   // },

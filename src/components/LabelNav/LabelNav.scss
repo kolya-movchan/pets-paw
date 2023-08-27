@@ -11,6 +11,11 @@
   border-radius: 10px;
   background-image: url('../../../public/graphics/back-20.svg');
   @extend %bg-img;
+  &:hover {
+    background-color: $red-main-color;
+
+    background-image: url('../../../public/graphics/back-white-20.svg');
+  }
 }
 
 .nav-title-container {
@@ -27,4 +32,3 @@
   color: $white-color;
   text-transform: uppercase;
 }
-

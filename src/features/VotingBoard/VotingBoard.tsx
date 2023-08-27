@@ -13,8 +13,6 @@ const VotingBoard = () => {
 
   const impressionHistory = useAppSelector<History>(state => state.historyLog)
 
-  console.log(impressionHistory.historyLog)
-
   useEffect(() => {
     getRandomCat(setRandomCat)
   }, [])
@@ -28,16 +26,16 @@ const VotingBoard = () => {
         {impressionHistory && (
           <ul className="impressionHistory">
             {impressionHistory.historyLog.map(action => {
-              const { id, message, time } = action
+              const { id, type, time, status } = action
               return (
                 <li
                   key={action.id}
                   className={classNames(
                     'impressionHistory-item',
-                    { 'impressionHistory-item--like': message === 'Likes' },
-                    { 'impressionHistory-item--fav': message === 'Favorites' },
+                    { 'impressionHistory-item--like': type === 'Likes' },
+                    { 'impressionHistory-item--fav': type === 'Favourites' },
                     {
-                      'impressionHistory-item--dislike': message === 'Dislikes'
+                      'impressionHistory-item--dislike': type === 'Dislikes'
                     }
                   )}
                 >
@@ -46,7 +44,7 @@ const VotingBoard = () => {
                     {' Image ID: '}
                   </span>
                   <span className="impressionHistory-id">{id}</span>
-                  <span className="impressionHistory-text">{` was added to ${message}`}</span>
+                  <span className="impressionHistory-text">{`${status === 'added' ? 'added to' : 'removed from'} ${type}`}</span>
                 </li>
               )
             })}

@@ -85,6 +85,10 @@
     background-image: url('../../../public/graphics/fav-20.svg');
   }
 
+  &--fav-page {
+    background-image: none;
+  }
+
   &--dislike {
     background-image: url('../../../public/graphics/dislike-color-20.svg');
   }

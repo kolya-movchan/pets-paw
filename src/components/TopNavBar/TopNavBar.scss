@@ -48,6 +48,12 @@
   background-image: url('../../../public/graphics/search-20.svg');
   background-repeat: no-repeat;
   background-position: center;
+
+  &:hover {
+    background-color: $red-main-color;
+
+    background-image: url('../../../public/graphics/search-white-20.svg');
+  }
 }
 
 .top-nav-links {

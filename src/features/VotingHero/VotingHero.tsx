@@ -24,7 +24,7 @@ export const VotingHero: React.FC<Props> = ({ randomCat, setRandomCat }) => {
 
   return (
     <>
-      <div className="voting-hero-container">
+      <div className="voting-hero-container loader-parent">
         {randomCat ? (
           <>
             <div className="voting-hero">{newImage}</div>
@@ -39,8 +39,8 @@ export const VotingHero: React.FC<Props> = ({ randomCat, setRandomCat }) => {
             <ReactLoading
               type={'spin'}
               color={'#FF868E'}
-              height={75}
-              width={75}
+              height={50}
+              width={50}
               delay={0}
             />
           </div>

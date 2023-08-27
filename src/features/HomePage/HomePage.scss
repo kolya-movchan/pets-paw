@@ -2,14 +2,6 @@
   flex-basis: 50%;
 
 
-  &__left-container {
-    @extend %flex-cl;
-    gap: 85px;
-    flex-grow: 1;
-    min-height: 100vh
-    // position: relative;
-  }
-
   &__welcome-container {
     position: sticky;
     top: 20px;
