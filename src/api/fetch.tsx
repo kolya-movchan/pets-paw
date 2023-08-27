@@ -1,4 +1,4 @@
-import { Cat, FavCat } from '../types/Api'
+import { BreedsFromAPI, Cat, FavCat } from '../types/Api'
 import { item } from './fetch-main'
 import 'react-toastify/dist/ReactToastify.css'
 import { toast } from 'react-toastify'
@@ -17,7 +17,7 @@ export const addToFavorites = async (id: string) => {
   const catIsInFav = await item.post<string>('favourites', { image_id: id })
 
   if (catIsInFav) {
-    toast('Cat\'s in Favourites, Meow 😻');
+    toast("Cat's in Favourites, Meow 😻")
   }
 }
 
@@ -25,10 +25,9 @@ export const getFavourites = async (
   setFavCats: Dispatch<FavCat[]>,
   setIsLoading: Dispatch<boolean>
 ) => {
-  setIsLoading(true);
+  setIsLoading(true)
   const favCats = await item.get<FavCat[]>('favourites')
-  setIsLoading(false);
-
+  setIsLoading(false)
 
   if (favCats) {
     setFavCats(favCats)
@@ -41,4 +40,10 @@ export const removeFavCat = async (id: string) => {
   const randomCat = await item.delete(`favourites/${id}`)
 
   return randomCat || null
+}
+
+export const getAllBreeds = async () => {
+  const allBreeds = await item.get<BreedsFromAPI[]>('breeds')
+
+  return allBreeds || null
 }

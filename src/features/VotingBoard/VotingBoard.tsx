@@ -3,19 +3,24 @@ import React, { useEffect, useState } from 'react'
 import { getRandomCat } from '../../api/fetch'
 import { useAppSelector } from '../../app/hooks'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
-import { History } from '../../reducers/HistoryLog'
+import { History, ImpressionLog } from '../../reducers/HistoryLog'
 import { Cat } from '../../types/Api'
+import { getCurrentTime } from '../../utils/calculations'
 import { ImpressionController } from '../ImpressionController/ImpressionController'
 import { VotingHero } from '../VotingHero/VotingHero'
 
 const VotingBoard = () => {
   const [randomCat, setRandomCat] = useState<Cat | undefined>()
 
-  const impressionHistory = useAppSelector<History>(state => state.historyLog)
+  let impressionHistory = useAppSelector<ImpressionLog[]>(state => state.historyLog.historyLog)
 
   useEffect(() => {
     getRandomCat(setRandomCat)
   }, [])
+
+  if (impressionHistory) {
+    impressionHistory = [...impressionHistory].sort((b, a) => a.time.getTime() - b.time.getTime())
+  }
 
   return (
     <div className="voting side-inner-container">
@@ -25,7 +30,7 @@ const VotingBoard = () => {
 
         {impressionHistory && (
           <ul className="impressionHistory">
-            {impressionHistory.historyLog.map(action => {
+            {impressionHistory.map(action => {
               const { id, type, time, status } = action
               return (
                 <li
@@ -39,7 +44,7 @@ const VotingBoard = () => {
                     }
                   )}
                 >
-                  <span className="impressionHistory-time">{time}</span>
+                  <span className="impressionHistory-time">{getCurrentTime(time)}</span>
                   <span className="impressionHistory-text">
                     {' Image ID: '}
                   </span>

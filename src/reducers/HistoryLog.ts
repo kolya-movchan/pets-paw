@@ -4,11 +4,11 @@ export interface History {
   historyLog: ImpressionLog[]
 }
 
-interface ImpressionLog {
+export interface ImpressionLog {
   id: string
   type: string,
   status: string,
-  time: string
+  time: Date
 }
 
 const initialState: History = {
@@ -16,70 +16,61 @@ const initialState: History = {
 }
 
 
-
-const getCurrentTime = () => {
-  return new Date().toLocaleString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
-  })
-}
-
 export const historySlice = createSlice({
   name: 'history',
   initialState,
   reducers: {
     addLike: (state: History, action: PayloadAction<string>) => {
-      state.historyLog.unshift({
+      state.historyLog.push({
         id: action.payload,
         type: 'Likes',
         status: 'added',
-        time: getCurrentTime(),
+        time: new Date(),
       })
     },
     addFav: (state: History, action: PayloadAction<string>) => {
-      state.historyLog.unshift({
+      state.historyLog.push({
         id: action.payload,
         type: 'Favourites',
         status: 'added',
-        time: getCurrentTime(),
+        time: new Date(),
       })
     },
 
     addDislike: (state: History, action: PayloadAction<string>) => {
-      state.historyLog.unshift({
+      state.historyLog.push({
         id: action.payload,
         type: 'Dislikes',
         status: 'added',
-        time: getCurrentTime(),
+        time: new Date(),
       })
     },
 
     removeFav: (state: History, action: PayloadAction<string>) => {
-      state.historyLog.unshift({
+      state.historyLog.push({
         id: action.payload,
         type: 'Favourites',
         status: 'removed',
-        time: getCurrentTime(),
+        time: new Date(),
       })
     }
     // removeLike: (state: History, action: PayloadAction<string>) => {
     //   switch (action.payload) {
     //     case 'removelike':
-    //       state.historyLog.unshift(
+    //       state.historyLog.push(
     //         `Image ID: ${action.payload} was removed from Likes`
     //       )
     //       break
 
     //     case 'removefav':
-    //       state.historyLog.unshift(
+    //       state.historyLog.push(
     //         `Image ID: ${action.payload} was removed from Favorites`
     //       )
 
     //       break
 
     //     case 'removelike':
-    //       state.historyLog.unshift(
+    //       state.historyLog.push(
     //         `Image ID: ${action.payload} was removed from Dislikes`
     //       )
 

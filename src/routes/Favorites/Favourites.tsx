@@ -9,14 +9,15 @@ import { NotFound } from '../../components/NotFound/NotFound'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
 import { FavCat } from '../../types/Api'
 import { removeFromFavById } from '../../utils/impression-controller'
-import { History } from '../../reducers/HistoryLog'
+import { History, ImpressionLog } from '../../reducers/HistoryLog'
+import { getCurrentTime } from '../../utils/calculations'
 
 
 export const Favourites = () => {
   const [favsCats, setFavCats] = useState<FavCat[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useAppDispatch()
-  const historyLog = useAppSelector<History>(state => state.historyLog)
+  const historyLog = useAppSelector<ImpressionLog[]>(state => state.historyLog.historyLog)
 
   useEffect(() => {
     getFavourites(setFavCats, setIsLoading)
@@ -69,14 +70,14 @@ export const Favourites = () => {
 
         {!isLoading && (
           <ul className="impressionHistory">
-            {historyLog.historyLog.map(action => {
+            {[...historyLog].filter(cat => cat.type === 'Favourites').sort((b, a) => a.time.getTime() - b.time.getTime()).map(action => {
               const { id, time, type, status } = action
               return (
                 <li
                   key={action.id}
                   className="impressionHistory-item impressionHistory-item--fav-page"
                 >
-                  <span className="impressionHistory-time">{time}</span>
+                  <span className="impressionHistory-time">{getCurrentTime(time)}</span>
                   <span className="impressionHistory-text">
                     {' Image ID: '}
                   </span>

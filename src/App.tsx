@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { HomePage } from './features/HomePage/HomePage'
+import { Breeds } from './routes/Breeds/Breeds'
 import { CoverPoster } from './routes/CoverPoster/CoverPoster'
 import { Dislikes } from './routes/Dislikes/Dislikes'
 import { Favourites } from './routes/Favorites/Favourites'
@@ -18,6 +19,7 @@ export function App() {
           <Route path="/likes" element={<Likes />}></Route>
           <Route path="/favourites" element={<Favourites />}></Route>
           <Route path="/dislikes" element={<Dislikes />}></Route>
+          <Route path="/breeds" element={<Breeds />}></Route>
         </Routes>
       </div>
       <ToastContainer position="bottom-left" autoClose={300} />{' '}

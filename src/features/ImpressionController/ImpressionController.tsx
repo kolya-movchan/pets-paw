@@ -1,4 +1,5 @@
-import React from 'react'
+import classNames from 'classnames'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch } from '../../app/hooks'
 import { Cat } from '../../types/Api'
 import {
@@ -19,25 +20,56 @@ export const ImpressionController: React.FC<Props> = ({
   randomCat
 }) => {
   const dispatch = useAppDispatch()
+  const [lastClickTime, setLastClickTime] = useState(0)
+  const [isDisabled, setIsDisabled] = useState(false)
+
+  useEffect(() => {
+    if (isDisabled) {
+      const timer = setTimeout(() => {
+        setIsDisabled(false)
+      }, 1300) 
+      return () => clearTimeout(timer)
+    }
+  }, [isDisabled])
+
+  const handleClick = (action: Function) => {
+    if (!isDisabled) {
+      setIsDisabled(true)
+      setLastClickTime(Date.now())
+      action()
+    }
+  }
+
+  console.log(isDisabled);
+  
 
   return (
-    <div className="impression-controller">
-      <div className="impression">
+    <div className='impression-controller'>
+      <div className='impression'>
         <button
-          onClick={() => addToLikes(setRandomCat, randomCat, dispatch)}
+          onClick={() =>
+            handleClick(() => addToLikes(setRandomCat, randomCat, dispatch))
+          }
           className="impression-mode impression-mode--like"
+          disabled={isDisabled}
         ></button>
       </div>
       <div className="impression">
         <button
           className="impression-mode impression-mode--fav"
-          onClick={() => addCatToFav(setRandomCat, randomCat.id, dispatch)}
+          onClick={() =>
+            handleClick(() => addCatToFav(setRandomCat, randomCat.id, dispatch))
+          }
+          disabled={isDisabled}
         ></button>
       </div>
       <div className="impression">
         <button
           className="impression-mode impression-mode--dislike"
-          onClick={() => addToDislikes(setRandomCat, randomCat, dispatch)}
+          onClick={() =>
+            handleClick(() => addToDislikes(setRandomCat, randomCat, dispatch))
+          }
+          disabled={isDisabled}
         ></button>
       </div>
     </div>

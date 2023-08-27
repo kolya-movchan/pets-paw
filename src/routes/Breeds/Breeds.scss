@@ -1,0 +1,69 @@
+.breeds-navbar-container {
+  display: flex;
+  gap: 10px;
+}
+
+.breeds-navbar {
+  display: flex;
+  flex-grow: 1;
+  gap: 10px;
+
+  &__select {
+    height: 40px;
+    padding: 8px 10px;
+    width: 100%;
+
+    font-size: 16px;
+    line-height: 24px; /* 150% */
+
+    border-radius: 10px;
+    color: #8c8c8c;
+    background: #f8f8f7;
+    -webkit-appearance: none;
+    background-image: url('../../../public/graphics/dropdown-12.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position-x: 90%;
+    border: 2px solid #f8f8f7;
+
+    &:hover {
+     border: 2px solid #FBE0DC;
+    }
+
+    &:focus {
+      outline-color: #FBE0DC;
+    }
+  }
+
+
+
+
+  &__select--breeds {
+    // flex: 1;
+  }
+
+  &__select--limit {
+    max-width: 110px;
+    // flex-grow: 1;
+    // min-width: 101px;
+  }
+
+  &__sort {
+    min-width: 40px;
+    height: 40px;
+    background: #f8f8f7;
+    border-radius: 10px;
+
+    &--desc {
+      background-image: url('../../../public/graphics/sort-revert-20.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &--asc {
+      background-image: url('../../../public/graphics/sort-20.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}

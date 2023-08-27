@@ -51,9 +51,6 @@ export const addToDislikes = (
   } else {
     localStorage.setItem('dislikes', JSON.stringify([cat]))
   }
-
-  // console.log(disLikesStorage, 'disLikesStorage')
-  // console.log(cat, 'cat')
 }
 
 export const addCatToFav = (
