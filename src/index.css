@@ -9,7 +9,7 @@ body {
   overflow: overlay;
 }
 
-h1, h2, p, ul {
+h1, h2, h3, p, ul {
   margin: 0;
 }
 
@@ -41,12 +41,12 @@ li {
   flex-direction: column;
 }
 
-.nav-title-container, .top-nav-link, .top-nav-links, .cover-poster {
+.nav-title-container, .top-nav-link, .top-nav-links, .breed-id-label, .cover-poster {
   justify-content: center;
   align-items: center;
 }
 
-.nav-title-container, .top-nav-link, .top-nav-links, .cover-poster {
+.nav-title-container, .top-nav-link, .top-nav-links, .breed-id-label, .cover-poster {
   display: flex;
 }
 
@@ -161,6 +161,7 @@ body {
 
 .cat {
   position: relative;
+  cursor: pointer;
 }
 
 .overlay {
@@ -171,23 +172,33 @@ body {
   height: 100%;
   border-radius: 20px;
   background: rgba(255, 134, 142, 0.6);
-  opacity: 0; /* Initially hidden */
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.overlay-heart {
+.overlay-bg {
+  height: 40px;
   position: relative;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.overlay-bg--fav {
+  width: 40px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 10px;
-  width: 40px;
-  height: 40px;
-  background-color: #fff;
   background-image: url("../../public//graphics/fav-color-20.svg");
   background-repeat: no-repeat;
   background-position: center;
-  cursor: pointer;
+}
+.overlay-bg--breed {
+  width: 90%;
+  top: 78%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ff868e;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .cat:hover .overlay {
@@ -258,21 +269,30 @@ body {
   background-position: right;
   background-position-x: 90%;
   border: 2px solid #f8f8f7;
+  cursor: pointer;
 }
 .breeds-navbar__select:hover {
-  border: 2px solid #FBE0DC;
+  border: 2px solid #fbe0dc;
 }
 .breeds-navbar__select:focus {
-  outline-color: #FBE0DC;
+  outline-color: #fbe0dc;
 }
 .breeds-navbar__select--limit {
   max-width: 110px;
+}
+.breeds-navbar__sort button {
+  height: 100%;
+  width: 100%;
 }
 .breeds-navbar__sort {
   min-width: 40px;
   height: 40px;
   background: #f8f8f7;
   border-radius: 10px;
+}
+.breeds-navbar__sort:hover {
+  cursor: pointer;
+  border: 2px solid #fbe0dc;
 }
 .breeds-navbar__sort--desc {
   background-image: url("../../../public/graphics/sort-revert-20.svg");
@@ -283,6 +303,96 @@ body {
   background-image: url("../../../public/graphics/sort-20.svg");
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.breed-id-label {
+  min-width: 90px;
+  height: 40px;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 10px;
+  background-color: #ff868e;
+}
+
+.breed-parent {
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  gap: 2px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+  height: 30px;
+  width: min-content;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.slider-picker {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #fbe0dc;
+  cursor: pointer;
+}
+.slider-picker--active {
+  background-color: #FF868E;
+}
+
+.breed-info-card {
+  position: relative;
+  border-radius: 20px;
+  border: 2px solid #fbe0dc;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.breed-info-card__name {
+  display: block;
+  color: #1d1d1d;
+  font-size: 36px;
+}
+.breed-info-card__description {
+  color: #8c8c8c;
+  font-size: 20px;
+}
+
+.breed-top-container {
+  transform: translateY(-25px);
+  position: relative;
+  padding: 5px 40px;
+  background-color: #fff;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.description-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 60px 30px;
+}
+
+.description-1stcl {
+  width: 50%;
+}
+
+.description-1stcl .info-title {
+  width: 50%;
+  display: block;
+}
+
+.info-title {
+  color: #1d1d1d;
+  font-size: 16px;
+}
+
+.info-data {
+  font-size: 16px;
+  color: #8c8c8c;
 }
 
 .top-nav {
@@ -533,12 +643,12 @@ body {
   flex-direction: column;
 }
 
-.cover-poster, .top-nav-links, .top-nav-link, .nav-title-container {
+.cover-poster, .breed-id-label, .top-nav-links, .top-nav-link, .nav-title-container {
   justify-content: center;
   align-items: center;
 }
 
-.cover-poster, .top-nav-links, .top-nav-link, .nav-title-container {
+.cover-poster, .breed-id-label, .top-nav-links, .top-nav-link, .nav-title-container {
   display: flex;
 }
 

@@ -1,4 +1,4 @@
-import { BreedsFromAPI, Cat, FavCat } from '../types/Api'
+import { BreedsImage, BreedsFromAPI, Cat, FavCat } from '../types/Api'
 import { item } from './fetch-main'
 import 'react-toastify/dist/ReactToastify.css'
 import { toast } from 'react-toastify'
@@ -42,8 +42,16 @@ export const removeFavCat = async (id: string) => {
   return randomCat || null
 }
 
-export const getAllBreeds = async () => {
-  const allBreeds = await item.get<BreedsFromAPI[]>('breeds')
+export const getAllBreeds = async (limit?: string) => {
+  const allBreeds = await item.get<BreedsFromAPI[]>(`${limit ? `breeds?limit=${limit}` : `breeds` }`)
+
+  return allBreeds || null
+}
+
+export const getBreedsByTypeFromApi = async (id: string, limit: string) => {
+  const allBreeds = await item.get<BreedsImage[]>(
+    `images/search?breed_ids=${id}&limit=${limit}`
+  )
 
   return allBreeds || null
 }

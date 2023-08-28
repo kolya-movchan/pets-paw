@@ -12,12 +12,13 @@ import { removeFromFavById } from '../../utils/impression-controller'
 import { History, ImpressionLog } from '../../reducers/HistoryLog'
 import { getCurrentTime } from '../../utils/calculations'
 
-
 export const Favourites = () => {
   const [favsCats, setFavCats] = useState<FavCat[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useAppDispatch()
-  const historyLog = useAppSelector<ImpressionLog[]>(state => state.historyLog.historyLog)
+  const historyLog = useAppSelector<ImpressionLog[]>(
+    state => state.historyLog.historyLog
+  )
 
   useEffect(() => {
     getFavourites(setFavCats, setIsLoading)
@@ -45,22 +46,18 @@ export const Favourites = () => {
           <div className="grid grid--fav">
             {favsCats?.map(cat => {
               return (
-                <div key={uuidv()} className={`cat`}>
+                <a
+                  key={uuidv()}
+                  className={`cat`}
+                  onClick={() =>
+                    removeFromFavById(cat.id, favsCats, setFavCats, dispatch)
+                  }
+                >
                   <img src={cat.image.url} alt="cat-image" />
                   <div className="overlay">
-                    <button
-                      className="overlay-heart"
-                      onClick={() =>
-                        removeFromFavById(
-                          cat.id,
-                          favsCats,
-                          setFavCats,
-                          dispatch
-                        )
-                      }
-                    ></button>
+                    <button className="overlay-bg overlay-bg--fav"></button>
                   </div>
-                </div>
+                </a>
               )
             })}
           </div>
@@ -70,24 +67,29 @@ export const Favourites = () => {
 
         {!isLoading && (
           <ul className="impressionHistory">
-            {[...historyLog].filter(cat => cat.type === 'Favourites').sort((b, a) => a.time.getTime() - b.time.getTime()).map(action => {
-              const { id, time, type, status } = action
-              return (
-                <li
-                  key={action.id}
-                  className="impressionHistory-item impressionHistory-item--fav-page"
-                >
-                  <span className="impressionHistory-time">{getCurrentTime(time)}</span>
-                  <span className="impressionHistory-text">
-                    {' Image ID: '}
-                  </span>
-                  <span className="impressionHistory-id">{id}</span>
-                  <span className="impressionHistory-text">{` was ${
-                    status === 'added' ? 'added to' : 'removed from'
-                  } Favourites`}</span>
-                </li>
-              )
-            })}
+            {[...historyLog]
+              .filter(cat => cat.type === 'Favourites')
+              .sort((b, a) => a.time.getTime() - b.time.getTime())
+              .map(action => {
+                const { id, time, type, status } = action
+                return (
+                  <li
+                    key={action.id}
+                    className="impressionHistory-item impressionHistory-item--fav-page"
+                  >
+                    <span className="impressionHistory-time">
+                      {getCurrentTime(time)}
+                    </span>
+                    <span className="impressionHistory-text">
+                      {' Image ID: '}
+                    </span>
+                    <span className="impressionHistory-id">{id}</span>
+                    <span className="impressionHistory-text">{` was ${
+                      status === 'added' ? 'added to' : 'removed from'
+                    } Favourites`}</span>
+                  </li>
+                )
+              })}
           </ul>
         )}
       </div>

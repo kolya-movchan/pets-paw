@@ -1,38 +1,71 @@
 import React, { useEffect, useState } from 'react'
-import { getAllBreeds } from '../../api/fetch'
+import ReactLoading from 'react-loading'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
-import { Breeds as BreedsType } from '../../types/Api'
-import { requestAllBreeds } from '../../utils/breeds-controller'
+import { Breed as BreedsType, BreedsImage } from '../../types/Api'
+import {
+  generateSlug,
+  requestAllBreeds,
+  selectBreed,
+  sortAscending,
+  sortDescending,
+  updateLimit
+} from '../../utils/breeds-controller'
 
 export const Breeds = () => {
   const [allBreeds, setAllBreeds] = useState<BreedsType[]>([])
+  const [breedsForGallery, setBreedsForGallery] = useState<BreedsImage[]>([])
   const [selectedBreed, setSelectedBreed] = useState<string>('')
+  const [limit, setLimit] = useState<string>('10')
+  const [isLoading, setIsLoading] = useState(false)
+
+  const [searchParams, setSearchParams] = useSearchParams()
+  
+
+  // const navigate = useNavigate()
 
   useEffect(() => {
-    requestAllBreeds(setAllBreeds)
+    requestAllBreeds(setBreedsForGallery, setIsLoading, setAllBreeds)
+    // requestAllBreeds(setBreedsForGallery, setIsLoading, limit)
   }, [])
-
-  // if (allBreeds) {
-  //   allBreeds.map(b =>
-  //     b.image ? console.log(b.image.url) : console.log('NOT FOUND')
-  //   )
-  // }
 
   return (
     <div className="side-container-menu">
       <TopNavBar />
-      <div className="voting side-inner-container">
+      <div className="voting side-inner-container loader-parent">
         <div className="breeds-navbar-container">
           <LabelNav label={'breeds'} />
+
+          {isLoading && (
+            <div className="loader">
+              <ReactLoading
+                type={'spin'}
+                color={'#FF868E'}
+                height={50}
+                width={50}
+                delay={0}
+              />
+            </div>
+          )}
+
           <div className="breeds-navbar">
             <select
-              name=""
-              id=""
+              name="breeds-type"
               value={selectedBreed}
               className="breeds-navbar__select breeds-navbar__select--breeds"
-              onChange={e => setSelectedBreed(e.target.value)}
-              disabled={allBreeds.length < 1}
+              onChange={e => 
+                selectBreed(
+                  setIsLoading,
+                  setSelectedBreed,
+                  setBreedsForGallery,
+                  setSearchParams,
+                  e.target.value,
+                  limit,
+                  searchParams,
+                )
+              }
+              disabled={breedsForGallery.length < 1}
             >
               <option value="">All breeds</option>
 
@@ -45,43 +78,81 @@ export const Breeds = () => {
                   )
                 })}
             </select>
-            {/* 
+
             <select
-              name=""
-              value=""
-              id=""
+              name="limit"
+              value={limit}
               className="breeds-navbar__select breeds-navbar__select--limit"
+              onChange={e => {
+                updateLimit(
+                  setSearchParams,
+                  e.target.value,
+                  searchParams,
+                  setLimit,
+                )
+
+                selectBreed(
+                  setIsLoading,
+                  setSelectedBreed,
+                  setBreedsForGallery,
+                  setSearchParams,
+                  selectedBreed,
+                  e.target.value,
+                  searchParams,
+                )
+              }
+                
+              }
             >
-              <option value=""></option>
-            </select> */}
-
-            {/* <div className="breeds-navbar__select breeds-navbar__select--limit">
-              Limit 10
-            </div> */}
-
-            <div className="breeds-navbar__sort breeds-navbar__sort--asc">
-              <button></button>
-            </div>
+              <option value="5">Limit: 5</option>
+              <option value="10">Limit: 10</option>
+              <option value="15">Limit: 15</option>
+              <option value="20">Limit: 20</option>
+            </select>
 
             <div className="breeds-navbar__sort breeds-navbar__sort--desc">
-              <button></button>
+              <button
+                onClick={() =>
+                  sortDescending(breedsForGallery, setBreedsForGallery)
+                }
+              ></button>
+            </div>
+
+            <div className="breeds-navbar__sort breeds-navbar__sort--asc">
+              <button
+                onClick={() =>
+                  sortAscending(breedsForGallery, setBreedsForGallery)
+                }
+              ></button>
             </div>
           </div>
         </div>
 
-        {allBreeds.length > 1 && (
+        {breedsForGallery.length > 1 && !isLoading && (
           <div className="grid">
-            {allBreeds?.map((breed) => {
-              if (breed.image) {
+            {breedsForGallery?.map(breed => {
+              if (breed?.url) {
                 return (
-                  <div key={breed.id} className='cat'>
-                    <img src={breed.image.url} alt="cat-image" />
-                  </div>
+                  <Link
+                    to={`/breeds/${generateSlug(breed.id)}?limit=${limit}`}
+                    key={breed.id}
+                    className="cat"
+                  >
+                    <img src={breed.url} alt="cat-image" />
+
+                    <div className="overlay">
+                      <button
+                        className="overlay-bg overlay-bg--breed"
+                      >
+                        {breed.name}
+                      </button>
+                    </div>
+                  </Link>
                 )
               }
-              
             })}
-        </div>)}
+          </div>
+        )}
       </div>
     </div>
   )

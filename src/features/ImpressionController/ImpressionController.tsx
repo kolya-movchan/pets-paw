@@ -39,8 +39,6 @@ export const ImpressionController: React.FC<Props> = ({
       action()
     }
   }
-
-  console.log(isDisabled);
   
 
   return (

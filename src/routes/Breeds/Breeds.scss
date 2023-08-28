@@ -25,27 +25,24 @@
     background-position: right;
     background-position-x: 90%;
     border: 2px solid #f8f8f7;
+    cursor: pointer;
 
     &:hover {
-     border: 2px solid #FBE0DC;
+      border: 2px solid #fbe0dc;
     }
 
     &:focus {
-      outline-color: #FBE0DC;
+      outline-color: #fbe0dc;
     }
-  }
-
-
-
-
-  &__select--breeds {
-    // flex: 1;
   }
 
   &__select--limit {
     max-width: 110px;
-    // flex-grow: 1;
-    // min-width: 101px;
+  }
+
+  &__sort button {
+    height: 100%;
+    width: 100%;
   }
 
   &__sort {
@@ -53,6 +50,11 @@
     height: 40px;
     background: #f8f8f7;
     border-radius: 10px;
+
+    &:hover {
+      cursor: pointer;
+      border: 2px solid #fbe0dc;
+    }
 
     &--desc {
       background-image: url('../../../public/graphics/sort-revert-20.svg');

@@ -68,15 +68,9 @@ export interface BreedsFromAPI {
   wikipedia_url: string
 }
 
-export interface Breeds {
+export interface Breed {
   id: string
   name: string
-  image: {
-    id: string
-    width: number
-    height: number
-    url: string
-  } | null,
   description: string
   temperament: string
   origin: string
@@ -85,4 +79,12 @@ export interface Breeds {
     metric: string
   }
   life_span: string
+}
+
+export interface BreedsImage {
+  id: string
+  name: string
+  height?: number
+  url?: string
+  width?: number
 }
