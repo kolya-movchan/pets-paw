@@ -1,62 +1,41 @@
-#  App 📊
+# Cat Lover App 🐱
 
-Intro ...
+Welcome to the Cat Lover App! This app connects to a cat API, allowing you to explore various cat breeds, like, dislike, and add cats to your favorites. Meow away!
 
-Check out the [**Live Demo**](https://kolya-movchan.github.io/*name-of-repo*) to see it in action!
+Check out the [**Live Demo**](https://pets-bqbngelro-kolya-movchan.vercel.app/) to see it in action!
 
-<p align="center">
-  <img src="https://github.com/kolya-movchan/*name-of-img*/raw/main/public/mopobank-demo-light.png" alt="Alt text" style="margin-bottom: 20px;">
-</p>
-
-<p align="center">
-  <img src="https://github.com/kolya-movchan/*name-of-repo*/raw/main/public/*name-of-img*" alt="Alt text">
-</p>
-
+![Cat Lover App]('link')
 
 ## Features 🚀
-- 📊 Feature 1
-- 💰 Feature 2
-- 🌙 Feature 3
-- 📅 Feature 4
+- 😺 Like and Dislike Cats
+- ❤️ Add Cats to Favorites
+- 🐾 Explore Different Cat Breeds
 
 ## Technologies Used 🛠️
+This project utilizes a range of technologies to provide an amazing user experience:
 
-This project makes use of modern technologies and libraries to provide a smooth and delightful user experience:
+- **React**: A library for building user interfaces, making UI development a breeze.
+- **Redux Toolkit**: Efficient state management for React applications.
+- **React Router**: Navigation and routing in the app.
+- **React Toastify**: Display notifications to users.
+- And more...
 
-- **React**: A widely used JavaScript library for building user interfaces, enabling seamless component-based UI development.
-- **Redux Toolkit**: The official recommended way to manage state in React applications, ensuring efficient and predictable state management.
-....
-  
 ## Development Tools 🛠️
+The development process is powered by various tools and dependencies:
 
-The project is built with the help of various development tools and dependencies:
+- **TypeScript**: Statically typed JavaScript for better code quality.
+- **ESLint** and **Prettier**: Maintain consistent code style.
+- **Sass**: Enhance styles with a powerful CSS preprocessor.
+- **Vite**: A fast build tool for efficient development.
+- **GitHub Pages**: Easily deploy your app for sharing.
 
-- **TypeScript**: A statically typed superset of JavaScript that enhances code quality and development efficiency.
-- **ESLint**: Provides code linting and ensures consistent code style following the AirBnB guidelines.
-- **Prettier**: Ensures code formatting is consistent and maintains a clean codebase.
-- **Sass**: A powerful CSS preprocessor for more organized and maintainable styles.
-- **Vite**: A fast build tool that significantly improves development experience with lightning-fast hot module replacement.
-- **GitHub Pages**: Deploy your app effortlessly to GitHub Pages for easy sharing.
-- **Vite Plugin SVGR**: Allows importing SVG files as React components for seamless vector graphics integration.
-  
 ## Getting Started 🏁
-
 1. Clone this repository.
 2. Run `npm install` to install dependencies.
 3. Start the development server with `npm run dev`.
 4. Open your browser and navigate to `http://localhost:3000`.
-5. Begin tracking your finances with ease!
+5. Embrace your inner cat lover!
 
-## Contributions and Feedback 🙌
-
-Contributions, issues, and feedback are more than welcome! Feel free to contribute or report issues in the [Issues](https://github.com/kolya-movchan/*name-of-repo*/issues) section!
-
--Phrase-call-to-action-open-project-
-
----
-
-Designed and developed with ❤️ by Kolya Movchan.
+Designed and developed with ❤️ by Kolya Movchan(https://github.com/kolya-movchan))
 
 Connect with me on [LinkedIn](https://www.linkedin.com/in/klmovchan/)
-
-[License](license) • This project is open-source.
