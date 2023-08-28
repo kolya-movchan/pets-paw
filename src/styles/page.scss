@@ -20,8 +20,6 @@ body {
 
 .app {
   display: flex;
-  // height: 100%;
-  // width: 100vw;
   min-height: 100vh;
   justify-content: space-between;
   padding: 30px;
@@ -32,7 +30,6 @@ body {
   @extend %flex-cl;
   gap: 85px;
   flex-grow: 1;
-  // min-height: 100vh
 }
 
 .dynamic-board {
@@ -43,7 +40,6 @@ body {
 .side-container-menu {
   @extend %flex-cl;
   flex-grow: 1;
-  // width: 100%;
   min-height: 100%;
 }
 
@@ -55,11 +51,8 @@ body {
   border-radius: 20px;
 
   &--breeds {
-    // flex-direction: column
   }
 }
-
-// /ref .voting
 .side-wrapper {
   @extend %flex-cl;
   flex-grow: 1;

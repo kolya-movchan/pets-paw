@@ -1,6 +1,7 @@
 .breed-id-label {
   @extend %flex-rw-centered-full;
 
+  padding: 15px;
   min-width: 90px;
   height: 40px;
   font-size: 20px;
@@ -41,10 +42,6 @@
 
 .breed-info-card {
   position: relative;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // height: 150px;
   border-radius: 20px;
   border: 2px solid #fbe0dc;
   justify-content: center;

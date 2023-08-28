@@ -6,15 +6,14 @@ export interface History {
 
 export interface ImpressionLog {
   id: string
-  type: string,
-  status: string,
+  type: string
+  status: string
   time: Date
 }
 
 const initialState: History = {
-  historyLog: [],
+  historyLog: []
 }
-
 
 export const historySlice = createSlice({
   name: 'history',
@@ -25,7 +24,7 @@ export const historySlice = createSlice({
         id: action.payload,
         type: 'Likes',
         status: 'added',
-        time: new Date(),
+        time: new Date()
       })
     },
     addFav: (state: History, action: PayloadAction<string>) => {
@@ -33,7 +32,7 @@ export const historySlice = createSlice({
         id: action.payload,
         type: 'Favourites',
         status: 'added',
-        time: new Date(),
+        time: new Date()
       })
     },
 
@@ -42,7 +41,7 @@ export const historySlice = createSlice({
         id: action.payload,
         type: 'Dislikes',
         status: 'added',
-        time: new Date(),
+        time: new Date()
       })
     },
 
@@ -51,35 +50,9 @@ export const historySlice = createSlice({
         id: action.payload,
         type: 'Favourites',
         status: 'removed',
-        time: new Date(),
+        time: new Date()
       })
     }
-    // removeLike: (state: History, action: PayloadAction<string>) => {
-    //   switch (action.payload) {
-    //     case 'removelike':
-    //       state.historyLog.push(
-    //         `Image ID: ${action.payload} was removed from Likes`
-    //       )
-    //       break
-
-    //     case 'removefav':
-    //       state.historyLog.push(
-    //         `Image ID: ${action.payload} was removed from Favorites`
-    //       )
-
-    //       break
-
-    //     case 'removelike':
-    //       state.historyLog.push(
-    //         `Image ID: ${action.payload} was removed from Dislikes`
-    //       )
-
-    //       break
-
-    //     default:
-    //       return state
-    //   }
-    // }
   }
 })
 

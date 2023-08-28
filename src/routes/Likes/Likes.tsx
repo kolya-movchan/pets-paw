@@ -3,7 +3,7 @@ import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
 import { Cat } from '../../types/Api'
 import { v4 as uuidv } from 'uuid'
-import '../../styles/grid.scss'; // Import the SCSS file
+import '../../styles/grid.scss';
 import { NotFound } from '../../components/NotFound/NotFound'
 
 
@@ -17,8 +17,6 @@ export const Likes = () => {
       setLikedCatsFromStorage(storedLikes)
     }
   }, [])
-
-  // console.log(likedCatsFromStorage)
 
   return (
     <div className="side-container-menu">

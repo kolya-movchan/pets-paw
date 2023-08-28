@@ -30,9 +30,6 @@ export const BreedsInfo = () => {
     }
   }, [])
 
-  // const { id, name, description, temperament, origin, weight, life_span } =
-  //   breedInfo || {}
-
   return (
     <div className="side-container-menu">
       <TopNavBar />

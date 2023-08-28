@@ -22,12 +22,8 @@ export const Breeds = () => {
 
   const [searchParams, setSearchParams] = useSearchParams()
   
-
-  // const navigate = useNavigate()
-
   useEffect(() => {
     requestAllBreeds(setBreedsForGallery, setIsLoading, setAllBreeds)
-    // requestAllBreeds(setBreedsForGallery, setIsLoading, limit)
   }, [])
 
   return (

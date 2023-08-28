@@ -51,7 +51,4 @@ export const item = {
     return request<T>(url, 'POST', data)
   },
   delete: (url: string) => request(url, 'DELETE')
-  // put: function<T>(url: string, data?: CFPforUpdate) {
-  //   return request<T>(url, 'PUT', data);
-  // },
 }

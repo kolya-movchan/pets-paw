@@ -70,7 +70,6 @@ export const requestAllBreeds = async (
 type SetURLSearchParams = ReturnType<typeof useSearchParams>[1]
 
 export const selectBreed = async (
-  // setAllBreeds: Dispatch<Breed[]>,
   setIsLoading: Dispatch<boolean>,
   setSelectedBreed: Dispatch<string>,
   setBreedsForGallery: Dispatch<BreedsImage[]>,
@@ -93,7 +92,6 @@ export const selectBreed = async (
 
   if (!selectedBreed.length) {
     requestAllBreeds(setBreedsForGallery, setIsLoading, undefined, limit)
-    // requestAllBreeds(setBreedsForGallery, setIsLoading, limit)
 
     return
   } else {
@@ -141,13 +139,10 @@ export const sortDescending = (
   breedsForGallery: BreedsImage[],
   setBreedsForGallery: Dispatch<BreedsImage[]>
 ) => {
-  // console.log(breedsForGallery);
 
   const sortedBreedsDesc = [...breedsForGallery].sort((breedA, breedB) => {
     return breedB.name?.localeCompare(breedA.name)
   })
-
-  // console.log(sortedBreedsDesc);
 
   setBreedsForGallery(sortedBreedsDesc)
 }

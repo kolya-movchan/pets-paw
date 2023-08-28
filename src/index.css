@@ -9,7 +9,11 @@ body {
   overflow: overlay;
 }
 
-h1, h2, h3, p, ul {
+h1,
+h2,
+h3,
+p,
+ul {
   margin: 0;
 }
 
@@ -259,7 +263,7 @@ body {
   padding: 8px 10px;
   width: 100%;
   font-size: 16px;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
   border-radius: 10px;
   color: #8c8c8c;
   background: #f8f8f7;
@@ -306,6 +310,7 @@ body {
 }
 
 .breed-id-label {
+  padding: 15px;
   min-width: 90px;
   height: 40px;
   font-size: 20px;
@@ -417,7 +422,7 @@ body {
   border: 2px solid #fff;
   color: #1d1d1d;
   font-size: 20px;
-  line-height: 30px; /* 150% */
+  line-height: 30px;
 }
 .input:hover {
   border-color: #fbe0dc;
