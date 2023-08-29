@@ -10,6 +10,11 @@ interface Image {
   url: string
 }
 
+export interface BreedList {
+  id: string,
+  name: string,
+}
+
 export interface FavCat {
   created_at: string
   id: number
@@ -87,4 +92,5 @@ export interface BreedsImage {
   height?: number
   url?: string
   width?: number
+  breeds?: BreedsFromAPI[],
 }

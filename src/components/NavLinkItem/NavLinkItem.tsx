@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { LinkItem } from '../../types/LinkItem'
 import { NavLink } from 'react-router-dom'
 import classNames from 'classnames'
@@ -9,13 +9,15 @@ type Props = {
 }
 
 export const NavLinkItem: React.FC<Props> = ({ link }) => {
-  const { to, image, bg } = link
+  const { to, image, bg, optiImage } = link
+
+  const [loadedImage, setLoadedImage] = useState(false)
 
   return (
     <NavLink
       to={to}
       className={({ isActive }) =>
-        classNames( 'nav__link-main', { 'nav__link-main--active': isActive })
+        classNames('nav__link-main', { 'nav__link-main--active': isActive })
       }
     >
       <div
@@ -27,11 +29,13 @@ export const NavLinkItem: React.FC<Props> = ({ link }) => {
         )}
       >
         <img
-          src={image}
+          src={loadedImage ? image : optiImage || image}
           alt={to}
           className={classNames('nav__link-img', {
-            'nav__link-img--gallery': to === 'gallery'
+            'nav__link-img--gallery': to === 'gallery',
+            'nav__link-img--pre': !loadedImage
           })}
+          onLoad={() => setLoadedImage(true)}
         />
       </div>
 

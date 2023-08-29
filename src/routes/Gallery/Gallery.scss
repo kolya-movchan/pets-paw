@@ -1,0 +1,87 @@
+.gallery {
+  &-top-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__upload-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 143px;
+    height: 40px;
+    background-color: $red-bg-color;
+    border-radius: 10px;
+    color: $red-main-color;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background-image: url('../../../public/graphics/upload-16.svg');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-position-x: 20%;
+
+    &:hover {
+      background-color: $red-main-color;
+      color: $white-color;
+      background-image: url('../../../public/graphics/upload-white-16.svg');
+    }
+  }
+
+  &__upload-btn-text {
+    margin-left: 25px;
+  }
+
+  &__filter-bar {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding: 10px 20px 20px;
+    gap: 20px;
+    row-gap: 10px;
+    border-radius: 20px;
+    background-color: #f8f8f7;
+  }
+
+  &__select-container {
+    flex: 0 0 calc(50% - 10px);
+  }
+
+  &__select-container:last-of-type {
+    flex: 0 0 calc(50% - 70px);
+  }
+
+  &__select-container span {
+    margin-left: 10px;
+    color: #8c8c8c;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 18px;
+    text-transform: uppercase;
+  }
+
+  &__select {
+    padding: 7px 10px;
+    color: #1d1d1d;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    background-color: $white-color;
+  }
+
+  &__action-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: $white-color;
+    background-image: url('../../../public/graphics/update-20.svg');
+    @extend %bg-img;
+
+    &:hover {
+      background-color: $red-main-color;
+      background-image: url('../../../public/graphics/update-white-20.svg');
+    }
+  }
+}

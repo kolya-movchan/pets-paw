@@ -25,12 +25,13 @@ function request<T>(
     'x-api-key': `${apiKey}`
   }
 
+  // console.log(url);
+
   if (data) {
-    console.log(data, url)
     options.body = JSON.stringify({ ...data, sub_id: userID })
   }
 
-  return wait(300)
+  return wait(0)
     .then(() => fetch(BASE_URL + url, options))
     .then(response => {
       if (!response.ok) {

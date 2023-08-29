@@ -43,7 +43,9 @@ export const removeFavCat = async (id: string) => {
 }
 
 export const getAllBreeds = async (limit?: string) => {
-  const allBreeds = await item.get<BreedsFromAPI[]>(`${limit ? `breeds?limit=${limit}` : `breeds` }`)
+  const allBreeds = await item.get<BreedsFromAPI[]>(
+    `${limit ? `breeds?limit=${limit}` : `breeds`}`
+  )
 
   return allBreeds || null
 }
@@ -51,6 +53,27 @@ export const getAllBreeds = async (limit?: string) => {
 export const getBreedsByTypeFromApi = async (id: string, limit: string) => {
   const allBreeds = await item.get<BreedsImage[]>(
     `images/search?breed_ids=${id}&limit=${limit}`
+  )
+
+  return allBreeds || null
+}
+
+export const getAllCats = async (
+  limit = '5',
+  order = '',
+  breed = '',
+  type = '',
+  page = '0',
+) => {
+
+  const page_ = type ? `&page=${page}` : ''
+  const order_ = order ? `&order=${order}` : ''
+  const breed_ = breed ? `&breed_ids=${breed}` : ''
+  const type_ = type ? `&mime_types=${type}` : ''
+  
+
+  const allBreeds = await item.get<BreedsImage[]>(
+    `images/search?limit=${limit}${page_}${order_}${breed_}${type_}`
   )
 
   return allBreeds || null

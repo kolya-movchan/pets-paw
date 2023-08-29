@@ -49,7 +49,7 @@ export const Breeds = () => {
             <select
               name="breeds-type"
               value={selectedBreed}
-              className="breeds-navbar__select breeds-navbar__select--breeds"
+              className="select breeds-navbar__select breeds-navbar__select--breeds"
               onChange={e => 
                 selectBreed(
                   setIsLoading,
@@ -78,7 +78,7 @@ export const Breeds = () => {
             <select
               name="limit"
               value={limit}
-              className="breeds-navbar__select breeds-navbar__select--limit"
+              className="select breeds-navbar__select breeds-navbar__select--limit"
               onChange={e => {
                 updateLimit(
                   setSearchParams,
@@ -134,7 +134,7 @@ export const Breeds = () => {
                     key={breed.id}
                     className="cat"
                   >
-                    <img src={breed.url} alt="cat-image" />
+                    <img src={breed.url} alt="cat-image" loading='lazy' />
 
                     <div className="overlay">
                       <button

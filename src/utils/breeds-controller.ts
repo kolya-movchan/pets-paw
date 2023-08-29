@@ -1,8 +1,28 @@
 import { useSearchParams } from 'react-router-dom'
-import { getAllBreeds, getBreedsByTypeFromApi } from '../api/fetch'
-import { Breed, BreedsImage } from '../types/Api'
+import { getAllBreeds, getAllCats, getBreedsByTypeFromApi } from '../api/fetch'
+import { Breed, BreedList, BreedsImage, Cat } from '../types/Api'
+import { handleSearchParams } from './api-helper'
 
 type Dispatch<T> = React.Dispatch<React.SetStateAction<T>>
+type SetURLSearchParams = ReturnType<typeof useSearchParams>[1]
+
+
+export const settAllGalleryItems = async (
+  setAllBreeds: Dispatch<BreedsImage[]>,
+  setIsLoading: Dispatch<boolean>,
+  setCatsForGallery: Dispatch<BreedsImage[]>,
+  setSearchParams: SetURLSearchParams,
+  searchParams: URLSearchParams
+) => {
+  setIsLoading(true)
+  handleSearchParams(setSearchParams, searchParams)
+
+  await requestAllBreeds(setAllBreeds)
+  await getCats(setCatsForGallery, setSearchParams, searchParams)
+
+
+  setIsLoading(false)
+}
 
 export function generateSlug(name: string) {
   return name.toLowerCase().replace(/ /g, '-')
@@ -10,15 +30,15 @@ export function generateSlug(name: string) {
 
 export const requestAllBreeds = async (
   setBreedsForGallery: Dispatch<BreedsImage[]>,
-  setIsLoading: Dispatch<boolean>,
-  setAllBreeds?: Dispatch<Breed[]>,
-  limit = ''
+  setIsLoading?: Dispatch<boolean>,
+  setAllBreeds?: Dispatch<Breed[]>
 ) => {
-  setIsLoading(true)
 
-  console.log(limit)
+  if (setIsLoading) {
+    setIsLoading(true)
+  }
 
-  const breeds = await getAllBreeds(limit)
+  const breeds = await getAllBreeds()
 
   const breedsModified = breeds
     .filter(breed => breed.image?.url)
@@ -50,8 +70,9 @@ export const requestAllBreeds = async (
   if (setAllBreeds) {
     setAllBreeds(breedsModified)
   }
-    setBreedsForGallery(
-      breedsModified.map(breed => {
+  setBreedsForGallery(
+    breedsModified
+      .map(breed => {
         const { id, name } = breed
 
         return {
@@ -62,12 +83,15 @@ export const requestAllBreeds = async (
           width: breed.image?.width
         }
       })
-    )
+      .sort(() => {
+        return Math.random() - 0.5
+      })
+  )
 
-  setIsLoading(false)
+  if (setIsLoading) {
+    setIsLoading(false)
+  }
 }
-
-type SetURLSearchParams = ReturnType<typeof useSearchParams>[1]
 
 export const selectBreed = async (
   setIsLoading: Dispatch<boolean>,
@@ -85,20 +109,16 @@ export const selectBreed = async (
 
   setSearchParams(searchParams)
 
-  console.log(selectedBreed);
-  
+  // console.log(selectedBreed)
 
   let breedsByType
 
   if (!selectedBreed.length) {
-    requestAllBreeds(setBreedsForGallery, setIsLoading, undefined, limit)
+    requestAllBreeds(setBreedsForGallery, setIsLoading, undefined)
 
     return
   } else {
     breedsByType = await getBreedsByTypeFromApi(selectedBreed, limit)
-
-    console.log(breedsByType);
-    
   }
 
   breedsByType = breedsByType.map(breed => {
@@ -120,6 +140,7 @@ export const getBreedsByType = async (
 ) => {
   setIsLoading(true)
   const breedsByType = await getBreedsByTypeFromApi(id, limit)
+
   setBreedsByType(breedsByType)
   setIsLoading(false)
 }
@@ -139,7 +160,6 @@ export const sortDescending = (
   breedsForGallery: BreedsImage[],
   setBreedsForGallery: Dispatch<BreedsImage[]>
 ) => {
-
   const sortedBreedsDesc = [...breedsForGallery].sort((breedA, breedB) => {
     return breedB.name?.localeCompare(breedA.name)
   })
@@ -171,7 +191,7 @@ export const getBreedsInfo = async (
     life_span
   }
 
-  console.log(breedInfo)
+  // console.log(breedInfo)
 
   setBreedInfo(breedInfo)
 }
@@ -186,5 +206,78 @@ export const updateLimit = async (
   setSearchParams(searchParams)
 
   setLimit(limit)
+}
 
+export const getCats = async (
+  setCatsForGallery: Dispatch<BreedsImage[]>,
+  setSearchParams: SetURLSearchParams,
+  searchParams: URLSearchParams
+) => {
+
+  handleSearchParams(setSearchParams, searchParams)
+
+  const cats = await getAllCats()
+
+  setCatsForGallery(
+    [...cats].sort(() => {
+      return Math.random() - 0.5
+    })
+  )
+
+  return cats;
+}
+
+export const getAllBreedsData = async (
+  setAllBreeds: Dispatch<BreedList[]>,
+  setIsLoading: Dispatch<boolean>
+) => {
+  setIsLoading(true)
+
+  const breeds = await getAllBreeds()
+
+  const breedsModified = breeds.map(breed => {
+    return {
+      id: breed.id,
+      name: breed.name
+    }
+  })
+
+  setAllBreeds(breedsModified)
+
+  setIsLoading(false)
+}
+
+interface SearchParams {
+  format: string
+  data: string
+}
+
+export const getCatBySelectedType = async (
+  setIsLoading: Dispatch<boolean>,
+  setCatsForGallery: Dispatch<BreedsImage[]>,
+  newParam: SearchParams,
+  setSearchParams: SetURLSearchParams,
+  searchParams: URLSearchParams
+) => {
+  setIsLoading(true)
+
+  const searchParamsToUpdate = [
+    newParam.format,
+    newParam.format !== 'page'
+      ? newParam.data
+      : (Number(searchParams.get('page')) + 1).toString()
+  ]
+
+  const params = handleSearchParams(
+    setSearchParams,
+    searchParams,
+    searchParamsToUpdate
+  )
+
+  const { limit, breeds, order, type, page } = params
+
+  const cats = await getAllCats(limit, order, breeds, type, page)
+  setCatsForGallery(cats)
+
+  setIsLoading(false)
 }

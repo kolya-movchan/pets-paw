@@ -6,6 +6,7 @@ import { BreedsInfo } from './routes/BreedsInfo/BreedsInfo'
 import { CoverPoster } from './routes/CoverPoster/CoverPoster'
 import { Dislikes } from './routes/Dislikes/Dislikes'
 import { Favourites } from './routes/Favorites/Favourites'
+import { Gallery } from './routes/Gallery/Gallery'
 import { Likes } from './routes/Likes/Likes'
 import { Voting } from './routes/Voting/Voting'
 
@@ -22,6 +23,7 @@ export function App() {
           <Route path="/dislikes" element={<Dislikes />}></Route>
           <Route path="/breeds" element={<Breeds />}></Route>
           <Route path="/breeds/:slug" element={<BreedsInfo />} />
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
       </div>
       <ToastContainer position="bottom-left" autoClose={300} />{' '}

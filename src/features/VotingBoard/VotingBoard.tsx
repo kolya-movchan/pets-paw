@@ -23,7 +23,7 @@ const VotingBoard = () => {
   }
 
   return (
-    <div className="voting side-inner-container">
+    <div className="voting side-inner-container loader-parent">
       <LabelNav label="voting" />
       <div className="voting-interaction">
         <VotingHero randomCat={randomCat} setRandomCat={setRandomCat} />
