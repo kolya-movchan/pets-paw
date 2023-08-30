@@ -63,18 +63,28 @@ export const getAllCats = async (
   order = '',
   breed = '',
   type = '',
-  page = '0',
+  page = '0'
 ) => {
-
   const page_ = type ? `&page=${page}` : ''
   const order_ = order ? `&order=${order}` : ''
   const breed_ = breed ? `&breed_ids=${breed}` : ''
   const type_ = type ? `&mime_types=${type}` : ''
-  
 
   const allBreeds = await item.get<BreedsImage[]>(
     `images/search?limit=${limit}${page_}${order_}${breed_}${type_}`
   )
 
   return allBreeds || null
+}
+
+export const uploadCat = async (img: File) => {
+  const formData = new FormData();
+  formData.append('file', img);
+  
+
+  const isCatUploaded = await item.post('images/upload', formData)
+
+  console.log('isCatUploaded', isCatUploaded)
+
+  return isCatUploaded || null
 }

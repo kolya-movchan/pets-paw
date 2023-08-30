@@ -10,8 +10,16 @@ function wait(delay: number) {
   })
 }
 
+type FavImage = {
+  image_id: string
+}
+
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT'
-type Data = null | {}
+type Data = null | FormData | FavImage
+
+function isFormData(data: Data): data is FormData {
+  return data instanceof FormData
+}
 
 function request<T>(
   url: string,
@@ -20,20 +28,30 @@ function request<T>(
 ): Promise<T> {
   const options: RequestInit = { method }
 
-  options.headers = {
-    'Content-Type': 'application/json; charset=UTF-8',
-    'x-api-key': `${apiKey}`
-  }
-
-  // console.log(url);
+  isFormData(data)
+    ? options.headers = {
+        'x-api-key': `${apiKey}`
+      }
+    : options.headers = {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'x-api-key': `${apiKey}`
+      }
 
   if (data) {
-    options.body = JSON.stringify({ ...data, sub_id: userID })
+    if (isFormData(data)) {
+      options.body = data
+    } else {
+      options.body = JSON.stringify({ ...data, sub_id: userID })
+    }
   }
+
+  console.log(options, url)
 
   return wait(0)
     .then(() => fetch(BASE_URL + url, options))
     .then(response => {
+      console.log('response', response)
+
       if (!response.ok) {
         toast.error('Something went wrong')
 

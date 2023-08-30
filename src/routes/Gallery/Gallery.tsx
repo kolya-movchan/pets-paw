@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
 import { useSearchParams } from 'react-router-dom'
+import { addToFavorites } from '../../api/fetch'
+import { useAppDispatch } from '../../app/hooks'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
+import { UploadModal } from '../../features/UploadModal/UploadModal'
+import { addFav } from '../../reducers/HistoryLog'
 import { BreedList, BreedsImage } from '../../types/Api'
 import {
   // getAllBreedsData,
@@ -16,11 +20,11 @@ export const Gallery = () => {
   const [catsForGallery, setCatsForGallery] = useState<BreedsImage[]>([])
   const [allBreeds, setAllBreeds] = useState<BreedList[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [isUploadWindowOpened, setIsUploadWindowOpened] = useState(false)
+
   const [searchParams, setSearchParams] = useSearchParams()
 
   useEffect(() => {
-    console.log('effect')
-
     settAllGalleryItems(
       setAllBreeds,
       setIsLoading,
@@ -33,7 +37,15 @@ export const Gallery = () => {
     // getAllBreedsData(setAllBreeds, setIsLoading)
   }, [])
 
-  console.log(catsForGallery.length)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (isUploadWindowOpened) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [isUploadWindowOpened])
 
   return (
     <div className="side-container-menu">
@@ -42,12 +54,15 @@ export const Gallery = () => {
         <div className="gallery-top-container">
           <LabelNav label={'gallery'} />
 
-          <button className="gallery__upload-btn title">
+          <button
+            className="gallery__upload-btn title"
+            onClick={() => setIsUploadWindowOpened(true)}
+          >
             <span className="gallery__upload-btn-text">upload</span>
           </button>
         </div>
 
-        <div className="">
+        <div>
           <div className="gallery__filter-bar">
             <div className="gallery__select-container">
               <span>order</span>
@@ -173,7 +188,13 @@ export const Gallery = () => {
                       <div className="cat" key={cat.id}>
                         <img src={cat.url} alt="cat-image" loading="lazy" />
                         <div className="overlay">
-                          <button className="overlay-bg"></button>
+                          <button
+                            className="overlay-bg overlay-bg--to-fav"
+                            onClick={() => {
+                              addToFavorites(cat.id)
+                              dispatch(addFav(cat.id))
+                            }}
+                          ></button>
                         </div>
                       </div>
                     )
@@ -183,6 +204,19 @@ export const Gallery = () => {
             )}
 
             {!catsForGallery.length && !isLoading && <NotFound />}
+          </div>
+        </div>
+
+        <div className={isUploadWindowOpened ? 'body-overlay' : ''}>
+          <div
+            className={isUploadWindowOpened ? 'upload--open upload' : 'upload'}
+          >
+            {isUploadWindowOpened && (
+              <UploadModal
+                onClose={setIsUploadWindowOpened}
+                isOpen={isUploadWindowOpened}
+              />
+            )}
           </div>
         </div>
       </div>
