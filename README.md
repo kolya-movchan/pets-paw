@@ -4,7 +4,23 @@ Welcome to the Cat Lover App! This app connects to a cat API, allowing you to ex
 
 Check out the [**Live Demo**](https://kolya-movchan.github.io/pets-paw/) to see it in action!
 
-![Cat Lover App]('link')
+<p align="center">
+  <img src="https://github.com/kolya-movchan/pets-paw/raw/main/public/screenshots/vote-cat.png" alt="pets-paw demo page" style="margin-bottom: 20px;">
+</p>
+
+<p align="center">
+  <img src="https://github.com/kolya-movchan/pets-paw/raw/main/public/screenshots/breeds-cat.png" alt="pets-paw demo page" style="margin-bottom: 20px;">
+</p>
+
+<p align="center">
+  <img src="https://github.com/kolya-movchan/pets-paw/raw/main/public/screenshots/fav-cat.png" alt="pets-paw demo page" style="margin-bottom: 20px;">
+</p>
+
+
+<p align="center">
+  <img src="https://github.com/kolya-movchan/pets-paw/raw/main/public/screenshots/upload-cat.png" alt="pets-paw demo page" style="margin-bottom: 20px;">
+</p>
+
 
 ## Features 🚀
 - 😺 Like and Dislike Cats
