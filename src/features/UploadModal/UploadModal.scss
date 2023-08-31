@@ -32,14 +32,14 @@
     width: 40px;
     height: 40px;
     background-color: $white-color;
-    background-image: url('./graphics/close-20.svg');
+    background-image: url('.pets-paw/graphics/close-20.svg');
     @extend %bg-img;
     border-radius: 10px;
     align-self: flex-end;
 
     &:hover {
       background-color: $red-main-color;
-      background-image: url('./graphics/close-white-20.svg');
+      background-image: url('.pets-paw/graphics/close-white-20.svg');
     }
   }
 
@@ -133,11 +133,11 @@
     background-position-x: 10px;
 
     &--success {
-      background-image: url('./graphics/success-20.svg');
+      background-image: url('.pets-paw/graphics/success-20.svg');
     }
 
     &--fail {
-      background-image: url('./graphics/error-20.svg');
+      background-image: url('.pets-paw/graphics/error-20.svg');
     }
   }
 

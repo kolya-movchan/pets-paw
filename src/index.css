@@ -297,12 +297,12 @@ body {
   border: 2px solid #fbe0dc;
 }
 .breeds-navbar__sort--desc {
-  background-image: url("./graphics/sort-revert-20.svg");
+  background-image: url(".pets-paw/graphics/sort-revert-20.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 .breeds-navbar__sort--asc {
-  background-image: url("./graphics/sort-20.svg");
+  background-image: url(".pets-paw/graphics/sort-20.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -316,7 +316,7 @@ body {
   border-radius: 10px;
   background-color: #f8f8f7;
   -webkit-appearance: none;
-  background-image: url("./graphics/dropdown-12.svg");
+  background-image: url(".pets-paw/graphics/dropdown-12.svg");
   background-repeat: no-repeat;
   background-position: right;
   background-position-x: 90%;
@@ -438,7 +438,7 @@ body {
   line-height: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  background-image: url("./graphics/upload-16.svg");
+  background-image: url(".pets-paw/graphics/upload-16.svg");
   background-repeat: no-repeat;
   background-position: left;
   background-position-x: 20%;
@@ -446,7 +446,7 @@ body {
 .gallery__upload-btn:hover {
   background-color: #FF868E;
   color: #fff;
-  background-image: url("./graphics/upload-white-16.svg");
+  background-image: url(".pets-paw/graphics/upload-white-16.svg");
 }
 .gallery__upload-btn-text {
   margin-left: 25px;
@@ -489,11 +489,11 @@ body {
   height: 40px;
   border-radius: 10px;
   background: #fff;
-  background-image: url("./graphics/update-20.svg");
+  background-image: url(".pets-paw/graphics/update-20.svg");
 }
 .gallery__action-btn:hover {
   background-color: #FF868E;
-  background-image: url("./graphics/update-white-20.svg");
+  background-image: url(".pets-paw/graphics/update-white-20.svg");
 }
 
 .top-nav {
@@ -540,13 +540,13 @@ body {
   height: 40px;
   background-color: #FBE0DC;
   border-radius: 10px;
-  background-image: url("./graphics/search-20.svg");
+  background-image: url(".pets-paw/graphics/search-20.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 .search-icon:hover {
   background-color: #FF868E;
-  background-image: url("./graphics/search-white-20.svg");
+  background-image: url(".pets-paw/graphics/search-white-20.svg");
 }
 
 .top-nav-links {
@@ -563,42 +563,42 @@ body {
   background-position: center;
 }
 .top-nav-link--like {
-  background-image: url("./graphics/like-30.svg");
+  background-image: url(".pets-paw/graphics/like-30.svg");
 }
 .top-nav-link--favorites {
-  background-image: url("./graphics/fav-30.svg");
+  background-image: url(".pets-paw/graphics/fav-30.svg");
 }
 .top-nav-link--dislike {
-  background-image: url("./graphics/dislike-30.svg");
+  background-image: url(".pets-paw/graphics/dislike-30.svg");
 }
 .top-nav-link:hover {
   background-color: #FBE0DC;
 }
 .top-nav-link--like:active {
-  background-image: url("./graphics/like-white-30.svg");
+  background-image: url(".pets-paw/graphics/like-white-30.svg");
   background-color: #FF868E;
 }
 .top-nav-link--favorites:active {
-  background-image: url("./graphics/fav-white-30.svg");
+  background-image: url(".pets-paw/graphics/fav-white-30.svg");
   background-color: #FF868E;
 }
 .top-nav-link--dislike:active {
-  background-image: url("./graphics/dislike-white-30.svg");
+  background-image: url(".pets-paw/graphics/dislike-white-30.svg");
   background-color: #FF868E;
 }
 
 .active-top-link-like .top-nav-link--like {
-  background-image: url("./graphics/like-white-30.svg");
+  background-image: url(".pets-paw/graphics/like-white-30.svg");
   background-color: #FF868E;
 }
 
 .active-top-link-fav .top-nav-link--favorites {
-  background-image: url("./graphics/fav-white-30.svg");
+  background-image: url(".pets-paw/graphics/fav-white-30.svg");
   background-color: #FF868E;
 }
 
 .active-top-link-dislike .top-nav-link--dislike {
-  background-image: url("./graphics/dislike-white-30.svg");
+  background-image: url(".pets-paw/graphics/dislike-white-30.svg");
   background-color: #FF868E;
 }
 
@@ -714,11 +714,11 @@ body {
   height: 40px;
   background-color: #FBE0DC;
   border-radius: 10px;
-  background-image: url("./graphics/back-20.svg");
+  background-image: url(".pets-paw/graphics/back-20.svg");
 }
 .goback:hover {
   background-color: #FF868E;
-  background-image: url("./graphics/back-white-20.svg");
+  background-image: url(".pets-paw/graphics/back-white-20.svg");
 }
 
 .nav-title-container {
@@ -805,31 +805,31 @@ body {
 }
 .impression-mode--like {
   background-color: #97eab9;
-  background-image: url("./graphics/like-white-30.svg");
+  background-image: url(".pets-paw/graphics/like-white-30.svg");
 }
 .impression-mode--like:hover {
   background-color: #e0f9ea;
-  background-image: url("./graphics/like-color-30.svg");
+  background-image: url(".pets-paw/graphics/like-color-30.svg");
 }
 .impression-mode--fav {
   background-color: #FF868E;
-  background-image: url("./graphics/fav-white-30.svg");
+  background-image: url(".pets-paw/graphics/fav-white-30.svg");
 }
 .impression-mode--fav:hover {
   background-color: #FBE0DC;
-  background-image: url("./graphics/fav-30.svg");
+  background-image: url(".pets-paw/graphics/fav-30.svg");
 }
 .impression-mode--fav:active {
   background-color: #FF868E;
-  background-image: url("./graphics/fav-full-white-30.svg");
+  background-image: url(".pets-paw/graphics/fav-full-white-30.svg");
 }
 .impression-mode--dislike {
   background-color: #ffd280;
-  background-image: url("./graphics/dislike-white-30.svg");
+  background-image: url(".pets-paw/graphics/dislike-white-30.svg");
 }
 .impression-mode--dislike:hover {
   background-color: #fff1d9;
-  background-image: url("./graphics/dislike-color-30.svg");
+  background-image: url(".pets-paw/graphics/dislike-color-30.svg");
 }
 
 .impressionHistory {
@@ -848,16 +848,16 @@ body {
   background-position-y: 50%;
 }
 .impressionHistory-item--like {
-  background-image: url("./graphics/like-color-20.svg");
+  background-image: url(".pets-paw/graphics/like-color-20.svg");
 }
 .impressionHistory-item--fav {
-  background-image: url("./graphics/fav-20.svg");
+  background-image: url(".pets-paw/graphics/fav-20.svg");
 }
 .impressionHistory-item--fav-page {
   background-image: none;
 }
 .impressionHistory-item--dislike {
-  background-image: url("./graphics/dislike-color-20.svg");
+  background-image: url(".pets-paw/graphics/dislike-color-20.svg");
 }
 
 .impressionHistory-time {
@@ -913,13 +913,13 @@ body {
   width: 40px;
   height: 40px;
   background-color: #fff;
-  background-image: url("./graphics/close-20.svg");
+  background-image: url(".pets-paw/graphics/close-20.svg");
   border-radius: 10px;
   align-self: flex-end;
 }
 .upload__btn-close:hover {
   background-color: #FF868E;
-  background-image: url("./graphics/close-white-20.svg");
+  background-image: url(".pets-paw/graphics/close-white-20.svg");
 }
 .upload__title {
   margin-bottom: 10px;
@@ -997,10 +997,10 @@ body {
   background-position-x: 10px;
 }
 .upload__status-container--success {
-  background-image: url("./graphics/success-20.svg");
+  background-image: url(".pets-paw/graphics/success-20.svg");
 }
 .upload__status-container--fail {
-  background-image: url("./graphics/error-20.svg");
+  background-image: url(".pets-paw/graphics/error-20.svg");
 }
 .upload__success {
   width: max-content;
