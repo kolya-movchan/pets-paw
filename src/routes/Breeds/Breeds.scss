@@ -11,31 +11,31 @@
   &__select {
     color: #8c8c8c;
 
-  //   height: 40px;
-  //   padding: 8px 10px;
-  //   width: 100%;
+    //   height: 40px;
+    //   padding: 8px 10px;
+    //   width: 100%;
 
-  //   font-size: 16px;
-  //   line-height: 24px;
+    //   font-size: 16px;
+    //   line-height: 24px;
 
-  //   border-radius: 10px;
-  //   color: #8c8c8c;
-  //   background: #f8f8f7;
-  //   -webkit-appearance: none;
-  //   background-image: url('../../../public/graphics/dropdown-12.svg');
-  //   background-repeat: no-repeat;
-  //   background-position: right;
-  //   background-position-x: 90%;
-  //   border: 2px solid #f8f8f7;
-  //   cursor: pointer;
+    //   border-radius: 10px;
+    //   color: #8c8c8c;
+    //   background: #f8f8f7;
+    //   -webkit-appearance: none;
+    //   background-image: url('./graphics/dropdown-12.svg');
+    //   background-repeat: no-repeat;
+    //   background-position: right;
+    //   background-position-x: 90%;
+    //   border: 2px solid #f8f8f7;
+    //   cursor: pointer;
 
-  //   &:hover {
-  //     border: 2px solid #fbe0dc;
-  //   }
+    //   &:hover {
+    //     border: 2px solid #fbe0dc;
+    //   }
 
-  //   &:focus {
-  //     outline-color: #fbe0dc;
-  //   }
+    //   &:focus {
+    //     outline-color: #fbe0dc;
+    //   }
   }
 
   &__select--limit {
@@ -59,13 +59,13 @@
     }
 
     &--desc {
-      background-image: url('../../../public/graphics/sort-revert-20.svg');
+      background-image: url('./graphics/sort-revert-20.svg');
       background-repeat: no-repeat;
       background-position: center;
     }
 
     &--asc {
-      background-image: url('../../../public/graphics/sort-20.svg');
+      background-image: url('./graphics/sort-20.svg');
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -83,13 +83,12 @@
   border-radius: 10px;
   background-color: #f8f8f7;
   -webkit-appearance: none;
-  background-image: url('../../../public/graphics/dropdown-12.svg');
+  background-image: url('./graphics/dropdown-12.svg');
   background-repeat: no-repeat;
   background-position: right;
   background-position-x: 90%;
   border: 2px solid #f8f8f7;
   cursor: pointer;
-  
 
   &:hover {
     border: 2px solid #fbe0dc;

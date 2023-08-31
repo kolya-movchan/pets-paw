@@ -23,39 +23,39 @@
 
   &--like {
     background-color: #97eab9;
-    background-image: url('../../../public/graphics/like-white-30.svg');
+    background-image: url('./graphics/like-white-30.svg');
     @extend %bg-img;
 
     &:hover {
       background-color: #e0f9ea;
-      background-image: url('../../../public/graphics/like-color-30.svg');
+      background-image: url('./graphics/like-color-30.svg');
     }
   }
 
   &--fav {
     background-color: $red-main-color;
-    background-image: url('../../../public/graphics/fav-white-30.svg');
+    background-image: url('./graphics/fav-white-30.svg');
     @extend %bg-img;
 
     &:hover {
       background-color: $red-bg-color;
-      background-image: url('../../../public/graphics/fav-30.svg');
+      background-image: url('./graphics/fav-30.svg');
     }
 
     &:active {
       background-color: $red-main-color;
-      background-image: url('../../../public/graphics/fav-full-white-30.svg');
+      background-image: url('./graphics/fav-full-white-30.svg');
     }
   }
 
   &--dislike {
     background-color: #ffd280;
-    background-image: url('../../../public/graphics/dislike-white-30.svg');
+    background-image: url('./graphics/dislike-white-30.svg');
     @extend %bg-img;
 
     &:hover {
       background-color: #fff1d9;
-      background-image: url('../../../public/graphics/dislike-color-30.svg');
+      background-image: url('./graphics/dislike-color-30.svg');
     }
   }
 }
@@ -77,11 +77,11 @@
   background-position-y: 50%;
 
   &--like {
-    background-image: url('../../../public/graphics/like-color-20.svg');
+    background-image: url('./graphics/like-color-20.svg');
   }
 
   &--fav {
-    background-image: url('../../../public/graphics/fav-20.svg');
+    background-image: url('./graphics/fav-20.svg');
   }
 
   &--fav-page {
@@ -89,7 +89,7 @@
   }
 
   &--dislike {
-    background-image: url('../../../public/graphics/dislike-color-20.svg');
+    background-image: url('./graphics/dislike-color-20.svg');
   }
 }
 
@@ -108,7 +108,7 @@
 
 .impressionHistory-id {
   padding: 0 4px;
-  color: #1D1D1D;
+  color: #1d1d1d;
   font-weight: 500;
   line-height: 24px;
 }

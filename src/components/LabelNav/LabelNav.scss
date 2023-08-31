@@ -9,12 +9,12 @@
   height: 40px;
   background-color: $red-bg-color;
   border-radius: 10px;
-  background-image: url('../../../public/graphics/back-20.svg');
+  background-image: url('./graphics/back-20.svg');
   @extend %bg-img;
   &:hover {
     background-color: $red-main-color;
 
-    background-image: url('../../../public/graphics/back-white-20.svg');
+    background-image: url('./graphics/back-white-20.svg');
   }
 }
 
