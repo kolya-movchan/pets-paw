@@ -540,7 +540,7 @@ body {
   height: 40px;
   background-color: #FBE0DC;
   border-radius: 10px;
-  background-image: url("./graphics/search-20.svg");
+  background-image: url("../../../public/graphics/search-20.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
