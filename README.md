@@ -2,7 +2,7 @@
 
 Welcome to the Cat Lover App! This app connects to a cat API, allowing you to explore various cat breeds, like, dislike, and add cats to your favorites. Meow away!
 
-Check out the [**Live Demo**](https://pets-bqbngelro-kolya-movchan.vercel.app/) to see it in action!
+Check out the [**Live Demo**](https://kolya-movchan.github.io/pets-paw/) to see it in action!
 
 ![Cat Lover App]('link')
 
