@@ -73,7 +73,7 @@ export const SearchInput: React.FC<Props> = ({
         onBlur={handleBlur}
       ></input>
 
-      <div className="search-icon" style={{backgroundImage: '.build/graphics/search-20.svg'}}></div>
+      <div className="search-icon"></div>
 
       {query && (
         <div className="search-breeds-data" ref={searchBreedsRef}>
