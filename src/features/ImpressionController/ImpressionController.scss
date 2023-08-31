@@ -23,39 +23,39 @@
 
   &--like {
     background-color: #97eab9;
-    background-image: url('.pets-paw/graphics/like-white-30.svg');
+    background-image: url('/pets-paw/graphics/like-white-30.svg');
     @extend %bg-img;
 
     &:hover {
       background-color: #e0f9ea;
-      background-image: url('.pets-paw/graphics/like-color-30.svg');
+      background-image: url('/pets-paw/graphics/like-color-30.svg');
     }
   }
 
   &--fav {
     background-color: $red-main-color;
-    background-image: url('.pets-paw/graphics/fav-white-30.svg');
+    background-image: url('/pets-paw/graphics/fav-white-30.svg');
     @extend %bg-img;
 
     &:hover {
       background-color: $red-bg-color;
-      background-image: url('.pets-paw/graphics/fav-30.svg');
+      background-image: url('/pets-paw/graphics/fav-30.svg');
     }
 
     &:active {
       background-color: $red-main-color;
-      background-image: url('.pets-paw/graphics/fav-full-white-30.svg');
+      background-image: url('/pets-paw/graphics/fav-full-white-30.svg');
     }
   }
 
   &--dislike {
     background-color: #ffd280;
-    background-image: url('.pets-paw/graphics/dislike-white-30.svg');
+    background-image: url('/pets-paw/graphics/dislike-white-30.svg');
     @extend %bg-img;
 
     &:hover {
       background-color: #fff1d9;
-      background-image: url('.pets-paw/graphics/dislike-color-30.svg');
+      background-image: url('/pets-paw/graphics/dislike-color-30.svg');
     }
   }
 }
@@ -77,11 +77,11 @@
   background-position-y: 50%;
 
   &--like {
-    background-image: url('.pets-paw/graphics/like-color-20.svg');
+    background-image: url('/pets-paw/graphics/like-color-20.svg');
   }
 
   &--fav {
-    background-image: url('.pets-paw/graphics/fav-20.svg');
+    background-image: url('/pets-paw/graphics/fav-20.svg');
   }
 
   &--fav-page {
@@ -89,7 +89,7 @@
   }
 
   &--dislike {
-    background-image: url('.pets-paw/graphics/dislike-color-20.svg');
+    background-image: url('/pets-paw/graphics/dislike-color-20.svg');
   }
 }
 

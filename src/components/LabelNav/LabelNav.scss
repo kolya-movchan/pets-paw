@@ -9,12 +9,12 @@
   height: 40px;
   background-color: $red-bg-color;
   border-radius: 10px;
-  background-image: url('.pets-paw/graphics/back-20.svg');
+  background-image: url('/pets-paw/graphics/back-20.svg');
   @extend %bg-img;
   &:hover {
     background-color: $red-main-color;
 
-    background-image: url('.pets-paw/graphics/back-white-20.svg');
+    background-image: url('/pets-paw/graphics/back-white-20.svg');
   }
 }
 

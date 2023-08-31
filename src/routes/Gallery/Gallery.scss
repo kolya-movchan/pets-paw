@@ -17,7 +17,7 @@
     line-height: 16px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    background-image: url('.pets-paw/graphics/upload-16.svg');
+    background-image: url('/pets-paw/graphics/upload-16.svg');
     background-repeat: no-repeat;
     background-position: left;
     background-position-x: 20%;
@@ -25,7 +25,7 @@
     &:hover {
       background-color: $red-main-color;
       color: $white-color;
-      background-image: url('.pets-paw/graphics/upload-white-16.svg');
+      background-image: url('/pets-paw/graphics/upload-white-16.svg');
     }
   }
 
@@ -76,12 +76,12 @@
     height: 40px;
     border-radius: 10px;
     background: $white-color;
-    background-image: url('.pets-paw/graphics/update-20.svg');
+    background-image: url('/pets-paw/graphics/update-20.svg');
     @extend %bg-img;
 
     &:hover {
       background-color: $red-main-color;
-      background-image: url('.pets-paw/graphics/update-white-20.svg');
+      background-image: url('/pets-paw/graphics/update-white-20.svg');
     }
   }
 }

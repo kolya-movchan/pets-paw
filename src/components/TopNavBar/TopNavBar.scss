@@ -45,14 +45,14 @@
   height: 40px;
   background-color: $red-bg-color;
   border-radius: 10px;
-  background-image: url('.pets-paw/graphics/search-20.svg');
+  background-image: url('/pets-paw/graphics/search-20.svg');
   background-repeat: no-repeat;
   background-position: center;
 
   &:hover {
     background-color: $red-main-color;
 
-    background-image: url('.pets-paw/graphics/search-white-20.svg');
+    background-image: url('/pets-paw/graphics/search-white-20.svg');
   }
 }
 
@@ -73,15 +73,15 @@
   background-position: center;
 
   &--like {
-    background-image: url('.pets-paw/graphics/like-30.svg');
+    background-image: url('/pets-paw/graphics/like-30.svg');
   }
 
   &--favorites {
-    background-image: url('.pets-paw/graphics/fav-30.svg');
+    background-image: url('/pets-paw/graphics/fav-30.svg');
   }
 
   &--dislike {
-    background-image: url('.pets-paw/graphics/dislike-30.svg');
+    background-image: url('/pets-paw/graphics/dislike-30.svg');
   }
 
   &:hover {
@@ -89,33 +89,33 @@
   }
 
   &--like:active {
-    background-image: url('.pets-paw/graphics/like-white-30.svg');
+    background-image: url('/pets-paw/graphics/like-white-30.svg');
     background-color: $red-main-color;
   }
 
   &--favorites:active {
-    background-image: url('.pets-paw/graphics/fav-white-30.svg');
+    background-image: url('/pets-paw/graphics/fav-white-30.svg');
     background-color: $red-main-color;
   }
 
   &--dislike:active {
-    background-image: url('.pets-paw/graphics/dislike-white-30.svg');
+    background-image: url('/pets-paw/graphics/dislike-white-30.svg');
     background-color: $red-main-color;
   }
 }
 
 .active-top-link-like .top-nav-link--like {
-  background-image: url('.pets-paw/graphics/like-white-30.svg');
+  background-image: url('/pets-paw/graphics/like-white-30.svg');
   background-color: $red-main-color;
 }
 
 .active-top-link-fav .top-nav-link--favorites {
-  background-image: url('.pets-paw/graphics/fav-white-30.svg');
+  background-image: url('/pets-paw/graphics/fav-white-30.svg');
   background-color: $red-main-color;
 }
 
 .active-top-link-dislike .top-nav-link--dislike {
-  background-image: url('.pets-paw/graphics/dislike-white-30.svg');
+  background-image: url('/pets-paw/graphics/dislike-white-30.svg');
   background-color: $red-main-color;
 }
 
