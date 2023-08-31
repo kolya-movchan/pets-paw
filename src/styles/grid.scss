@@ -66,12 +66,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-image: url('../../public//graphics/fav-color-20.svg');
+    background-image: url('/pets-paw/graphics/fav-color-20.svg');
     background-repeat: no-repeat;
     background-position: center;
 
     &:active {
-      background-image: url('../../public//graphics/fav-20.svg');
+      background-image: url('/pets-paw/graphics/fav-20.svg');
     }
   }
 
@@ -80,17 +80,17 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-image: url('../../public//graphics/fav-20.svg');
+    background-image: url('/pets-paw/graphics/fav-20.svg');
     background-repeat: no-repeat;
     background-position: center;
 
     // &:active {
-    //   background-image: url('../../public//graphics/fav-color-20.svg');
+    //   background-image: url('/pets-paw/graphics/fav-color-20.svg');
     // }
   }
 
   &--in-fav {
-    background-image: url('../../public//graphics/fav-color-20.svg');
+    background-image: url('/pets-paw/graphics/fav-color-20.svg');
   }
 
   &--breed {
@@ -110,5 +110,5 @@
 }
 
 .overlay-heart:active {
-  background-image: url('../../public//graphics/fav-20.svg');
+  background-image: url('/pets-paw/graphics/fav-20.svg');
 }

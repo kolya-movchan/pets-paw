@@ -5,6 +5,7 @@ import { Cat } from '../../types/Api'
 import { v4 as uuidv } from 'uuid'
 import '../../styles/grid.scss';
 import { NotFound } from '../../components/NotFound/NotFound'
+import { SearchInput } from '../../components/SearchInput/SearchInput'
 
 
 export const Likes = () => {
@@ -20,7 +21,17 @@ export const Likes = () => {
 
   return (
     <div className="side-container-menu">
-      <TopNavBar />
+     <div className="top-nav">
+        {/* <SearchInput
+          // allBreeds={allBreeds}
+          // setIsLoading={setIsLoading}
+          // setSelectedBreed={setSelectedBreed}
+          // setBreedsForGallery={setBreedsForGallery}
+          // setSearchParams={setSearchParams}
+          // searchParams={searchParams}
+        /> */}
+        <TopNavBar />
+      </div>
       <div className="side-wrapper side-inner-container">
         <LabelNav label="likes" />
 

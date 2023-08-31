@@ -11,6 +11,7 @@ import { FavCat } from '../../types/Api'
 import { removeFromFavById } from '../../utils/impression-controller'
 import { History, ImpressionLog } from '../../reducers/HistoryLog'
 import { getCurrentTime } from '../../utils/calculations'
+import { SearchInput } from '../../components/SearchInput/SearchInput'
 
 export const Favourites = () => {
   const [favsCats, setFavCats] = useState<FavCat[]>([])
@@ -26,7 +27,17 @@ export const Favourites = () => {
 
   return (
     <div className="side-container-menu">
-      <TopNavBar />
+       <div className="top-nav">
+        {/* <SearchInput
+          // allBreeds={allBreeds}
+          // setIsLoading={setIsLoading}
+          // setSelectedBreed={setSelectedBreed}
+          // setBreedsForGallery={setBreedsForGallery}
+          // setSearchParams={setSearchParams}
+          // searchParams={searchParams}
+        /> */}
+        <TopNavBar />
+      </div>
       <div className="voting side-inner-container loader-parent">
         <LabelNav label="favourites" />
 
