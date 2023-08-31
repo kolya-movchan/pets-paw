@@ -61,6 +61,8 @@ export const addCatToFav = (
   dispatch: AppDispatch,
   selectedBreed: string,
 ) => {
+  console.log('id', id);
+  
   addToFavorites(id)
   getRandomCat(setRandomCat, selectedBreed)
   dispatch(addFav(id))

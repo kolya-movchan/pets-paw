@@ -34,7 +34,7 @@ const VotingBoard: React.FC<Props> = ({ selectedBreed }) => {
   
 
   if (impressionHistory) {
-    impressionHistory = [...impressionHistory].sort((b, a) => new Date(a.time).getTime() -  new Date(b.time).getTime())
+    impressionHistory = [...impressionHistory].sort((b, a) => new Date(a.time).getTime() - new Date(b.time).getTime())
   }
 
   return (
