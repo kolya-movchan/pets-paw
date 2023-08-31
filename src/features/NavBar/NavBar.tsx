@@ -14,14 +14,6 @@ export const NavBar = () => {
     { image: './home-page/gallery.svg', to: 'gallery', bg: ColorNavIcon.YELLOW }
   ]
 
-  // const [loadedImages, setLoadedImages] = useState(0)
-
-  // const handleImageLoad = () => {
-  //   console.log(loadedImages);
-
-  //   setLoadedImages(prevLoadedImages => prevLoadedImages + 1)
-  // }
-
   return (
     <div className="nav">
       <p className="nav__title title">Lets start using The Cat API</p>

@@ -1,20 +1,33 @@
 import classNames from 'classnames'
 import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { DescriptionInfo } from '../../components/DescriptionInfo/DescriptionInfo'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
+import { NotFound } from '../../components/NotFound/NotFound'
+import { SearchInput } from '../../components/SearchInput/SearchInput'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
-import { Breed, BreedsImage } from '../../types/Api'
-import { getBreedsByType, getBreedsInfo } from '../../utils/breeds-controller'
+import { Breed, BreedList, BreedsImage } from '../../types/Api'
+import {
+  getAllBreedsData,
+  getBreedsByType,
+  getBreedsInfo,
+  requestAllBreeds
+} from '../../utils/breeds-controller'
 
 export const BreedsInfo = () => {
   const { slug } = useParams()
   const location = useLocation()
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const [allBreeds, setAllBreeds] = useState<BreedList[]>([])
+  const [selectedBreed, setSelectedBreed] = useState<string>('')
   const [breedsByType, setBreedsByType] = useState<BreedsImage[]>([])
   const [breedInfo, setBreedInfo] = useState<Breed | null>(null)
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+
+  console.log('breedsByType', breedsByType)
 
   const selectPhotoByPick = (index: number) => {
     setCurrentPhotoIndex(index)
@@ -28,11 +41,27 @@ export const BreedsInfo = () => {
       getBreedsByType(slug, limit, setBreedsByType, setIsLoading)
       getBreedsInfo(slug, setBreedInfo)
     }
+
+    getAllBreedsData(setAllBreeds, setIsLoading)
   }, [])
+
+  console.log('allBreeds', allBreeds);
+  
 
   return (
     <div className="side-container-menu">
-      <TopNavBar />
+      <div className="top-nav">
+        <SearchInput
+          allBreeds={allBreeds}
+          setIsLoading={setIsLoading}
+          setSelectedBreed={setSelectedBreed}
+          setBreedsForGallery={setBreedsByType}
+          setSearchParams={setSearchParams}
+          searchParams={searchParams}
+          setBreedInfo={setBreedInfo}
+        />
+        <TopNavBar />
+      </div>
       <div className="voting side-inner-container loader-parent">
         <div className="breeds-navbar-container">
           <LabelNav label={'breeds'} />
@@ -78,10 +107,12 @@ export const BreedsInfo = () => {
               </div>
             </div>
 
-            {breedInfo && (
+            {breedInfo && breedInfo.id ? (
               <div className="breed-info-card">
                 <div className="breed-top-container">
-                  <h2 className="breed-info-card__name title">{breedInfo.name}</h2>
+                  <h2 className="breed-info-card__name title">
+                    {breedInfo.name}
+                  </h2>
 
                   <h3 className="breed-info-card__description title">
                     {breedInfo.description}
@@ -90,16 +121,27 @@ export const BreedsInfo = () => {
 
                 <div className="description-container">
                   <div className="description-1stcl">
-                    <DescriptionInfo title="Temperament" data={breedInfo.temperament} />
+                    <DescriptionInfo
+                      title="Temperament"
+                      data={breedInfo.temperament}
+                    />
                   </div>
 
                   <div className="description-2ndcl">
                     <DescriptionInfo title="Origin" data={breedInfo.origin} />
-                    <DescriptionInfo title="Weight" data={`${breedInfo.weight.metric} kg`} />
-                    <DescriptionInfo title="Life span" data={`${breedInfo.life_span} years`} />
+                    <DescriptionInfo
+                      title="Weight"
+                      data={`${breedInfo.weight.metric} kg`}
+                    />
+                    <DescriptionInfo
+                      title="Life span"
+                      data={`${breedInfo.life_span} years`}
+                    />
                   </div>
                 </div>
               </div>
+            ) : (
+              <NotFound />
             )}
           </>
         )}

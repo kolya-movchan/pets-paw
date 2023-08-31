@@ -84,9 +84,13 @@
     background-repeat: no-repeat;
     background-position: center;
 
-    &:active {
-      background-image: url('../../public//graphics/fav-color-20.svg');
-    }
+    // &:active {
+    //   background-image: url('../../public//graphics/fav-color-20.svg');
+    // }
+  }
+
+  &--in-fav {
+    background-image: url('../../public//graphics/fav-color-20.svg');
   }
 
   &--breed {

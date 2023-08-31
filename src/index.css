@@ -71,7 +71,7 @@ body {
   display: flex;
   min-height: 100vh;
   justify-content: space-between;
-  padding: 30px;
+  padding: 20px;
   padding-left: 147px;
 }
 
@@ -210,7 +210,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-.overlay-bg--to-fav:active {
+.overlay-bg--in-fav {
   background-image: url("../../public//graphics/fav-color-20.svg");
 }
 .overlay-bg--breed {
@@ -456,7 +456,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  padding: 10px 20px 20px;
+  padding: 10px 20px 15px;
   gap: 20px;
   row-gap: 10px;
   border-radius: 20px;
@@ -511,13 +511,13 @@ body {
 
 .input {
   width: 100%;
-  padding: 15px 20px;
+  padding: 13px 20px;
   border-radius: 20px;
   background: #fff;
   border: none;
   border: 2px solid #fff;
   color: #1d1d1d;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 30px;
 }
 .input:hover {
@@ -600,6 +600,27 @@ body {
 .active-top-link-dislike .top-nav-link--dislike {
   background-image: url("../../../public//graphics/dislike-white-30.svg");
   background-color: #FF868E;
+}
+
+.search-breeds-data {
+  width: 100%;
+  height: max-content;
+  max-height: 150px;
+  position: absolute;
+  top: 105%;
+  padding: 10px 0;
+  z-index: 3;
+  text-align: center;
+  overflow: hidden;
+  overflow-y: auto;
+  color: #8c8c8c;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.search-breeds-li {
+  padding: 5px;
+  cursor: pointer;
 }
 
 .nav__title {
@@ -928,6 +949,10 @@ body {
   border: 2px dashed #fbe0dc;
   cursor: pointer;
 }
+.upload__custom-label--error {
+  border: 2px dashed #FF868E;
+  background-color: #FBE0DC;
+}
 .upload__info {
   color: #8C8C8C;
   font-size: 20px;
@@ -962,15 +987,20 @@ body {
   color: #fff;
   background-color: #FF868E;
 }
-.upload__success-container {
+.upload__status-container {
   padding: 20px;
   height: 60px;
   border-radius: 10px;
   background: #fff;
-  background-image: url("../../../public/graphics/success-20.svg");
   background-position: left;
   background-repeat: no-repeat;
   background-position-x: 10px;
+}
+.upload__status-container--success {
+  background-image: url("../../../public/graphics/success-20.svg");
+}
+.upload__status-container--fail {
+  background-image: url("../../../public/graphics/error-20.svg");
 }
 .upload__success {
   width: max-content;

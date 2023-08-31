@@ -1,10 +1,6 @@
 body {
   font-family: 'Jost';
   background-color: #f8f8f7;
-
-  // // &--upload {
-  //   background-color: rgba(29, 29, 29, 0.60);
-  // // }
 }
 
 .title {
@@ -19,7 +15,7 @@ body {
   display: flex;
   min-height: 100vh;
   justify-content: space-between;
-  padding: 30px;
+  padding: 20px;
   padding-left: 147px;
 }
 
@@ -78,3 +74,4 @@ body {
   min-height: 45vh;
   position: relative;
 }
+

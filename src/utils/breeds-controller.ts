@@ -6,7 +6,6 @@ import { handleSearchParams } from './api-helper'
 type Dispatch<T> = React.Dispatch<React.SetStateAction<T>>
 type SetURLSearchParams = ReturnType<typeof useSearchParams>[1]
 
-
 export const settAllGalleryItems = async (
   setAllBreeds: Dispatch<BreedsImage[]>,
   setIsLoading: Dispatch<boolean>,
@@ -20,7 +19,6 @@ export const settAllGalleryItems = async (
   await requestAllBreeds(setAllBreeds)
   await getCats(setCatsForGallery, setSearchParams, searchParams)
 
-
   setIsLoading(false)
 }
 
@@ -29,11 +27,10 @@ export function generateSlug(name: string) {
 }
 
 export const requestAllBreeds = async (
-  setBreedsForGallery: Dispatch<BreedsImage[]>,
-  setIsLoading?: Dispatch<boolean>,
+  setBreedsForGallery: React.Dispatch<BreedsImage[]>,
+  setIsLoading?: React.Dispatch<boolean>,
   setAllBreeds?: Dispatch<Breed[]>
 ) => {
-
   if (setIsLoading) {
     setIsLoading(true)
   }
@@ -94,9 +91,9 @@ export const requestAllBreeds = async (
 }
 
 export const selectBreed = async (
-  setIsLoading: Dispatch<boolean>,
-  setSelectedBreed: Dispatch<string>,
-  setBreedsForGallery: Dispatch<BreedsImage[]>,
+  setIsLoading: React.Dispatch<boolean>,
+  setSelectedBreed: React.Dispatch<string>,
+  setBreedsForGallery: React.Dispatch<BreedsImage[]>,
   setSearchParams: SetURLSearchParams,
   selectedBreed: string,
   limit: string,
@@ -108,8 +105,6 @@ export const selectBreed = async (
   searchParams?.set('type', selectedBreed || 'all')
 
   setSearchParams(searchParams)
-
-  // console.log(selectedBreed)
 
   let breedsByType
 
@@ -191,8 +186,6 @@ export const getBreedsInfo = async (
     life_span
   }
 
-  // console.log(breedInfo)
-
   setBreedInfo(breedInfo)
 }
 
@@ -213,7 +206,6 @@ export const getCats = async (
   setSearchParams: SetURLSearchParams,
   searchParams: URLSearchParams
 ) => {
-
   handleSearchParams(setSearchParams, searchParams)
 
   const cats = await getAllCats()
@@ -224,7 +216,7 @@ export const getCats = async (
     })
   )
 
-  return cats;
+  return cats
 }
 
 export const getAllBreedsData = async (
@@ -281,3 +273,5 @@ export const getCatBySelectedType = async (
 
   setIsLoading(false)
 }
+
+// export getAllBred

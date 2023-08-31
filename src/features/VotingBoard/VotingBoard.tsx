@@ -9,24 +9,39 @@ import { getCurrentTime } from '../../utils/calculations'
 import { ImpressionController } from '../ImpressionController/ImpressionController'
 import { VotingHero } from '../VotingHero/VotingHero'
 
-const VotingBoard = () => {
-  const [randomCat, setRandomCat] = useState<Cat | undefined>()
+type Props = {
+  selectedBreed: string,
+}
+
+const VotingBoard: React.FC<Props> = ({ selectedBreed }) => {
+  const [randomCat, setRandomCat] = useState<Cat>()
+  // const [catsWithBreed, setCatsWithBreed] = useState<string[]>([])
 
   let impressionHistory = useAppSelector<ImpressionLog[]>(state => state.historyLog.historyLog)
 
   useEffect(() => {
-    getRandomCat(setRandomCat)
-  }, [])
+    getRandomCat(setRandomCat, selectedBreed)
+  }, [selectedBreed])
+
+  // useEffect(() => {
+  //   if (randomCat) {
+  //     setCatsWithBreed([...catsWithBreed, randomCat?.id])
+  //   }
+
+  // }, [randomCat])
+
+  // console.log(randomCat);
+  
 
   if (impressionHistory) {
-    impressionHistory = [...impressionHistory].sort((b, a) => a.time.getTime() - b.time.getTime())
+    impressionHistory = [...impressionHistory].sort((b, a) => new Date(a.time).getTime() -  new Date(b.time).getTime())
   }
 
   return (
     <div className="voting side-inner-container loader-parent">
       <LabelNav label="voting" />
       <div className="voting-interaction">
-        <VotingHero randomCat={randomCat} setRandomCat={setRandomCat} />
+        <VotingHero randomCat={randomCat} setRandomCat={setRandomCat} selectedBreed={selectedBreed} />
 
         {impressionHistory && (
           <ul className="impressionHistory">

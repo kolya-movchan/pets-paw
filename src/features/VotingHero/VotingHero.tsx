@@ -8,10 +8,11 @@ type Dispatch<T> = React.Dispatch<React.SetStateAction<T>>
 type Props = {
   randomCat: Cat | undefined
   setRandomCat: Dispatch<Cat | undefined>
+  selectedBreed: string
 }
 
-export const VotingHero: React.FC<Props> = ({ randomCat, setRandomCat }) => {
-  const { id, url, height, width } = randomCat || {}
+export const VotingHero: React.FC<Props> = ({ randomCat, setRandomCat, selectedBreed }) => {
+  const { url } = randomCat || {}
 
   const newImage = (
     <img
@@ -32,6 +33,7 @@ export const VotingHero: React.FC<Props> = ({ randomCat, setRandomCat }) => {
             <ImpressionController
               setRandomCat={setRandomCat}
               randomCat={randomCat}
+              selectedBreed={selectedBreed}
             />
           </>
         ) : (

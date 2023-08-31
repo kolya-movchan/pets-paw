@@ -13,13 +13,13 @@
 
 .input {
   width: 100%;
-  padding: 15px 20px;
+  padding: 13px 20px;
   border-radius: 20px;
   background: $white-color;
   border: none;
   border: 2px solid $white-color;
   color: #1d1d1d;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 30px;
 
   &:hover {
@@ -80,7 +80,7 @@
     background-image: url('../../../public//graphics/fav-30.svg');
   }
 
-  &--dislike  {
+  &--dislike {
     background-image: url('../../../public//graphics/dislike-30.svg');
   }
 
@@ -109,7 +109,6 @@
   background-color: $red-main-color;
 }
 
-
 .active-top-link-fav .top-nav-link--favorites {
   background-image: url('../../../public//graphics/fav-white-30.svg');
   background-color: $red-main-color;
@@ -118,4 +117,27 @@
 .active-top-link-dislike .top-nav-link--dislike {
   background-image: url('../../../public//graphics/dislike-white-30.svg');
   background-color: $red-main-color;
+}
+
+.search-breeds-data {
+  width: 100%;
+  height: max-content;
+  max-height: 150px;
+  position: absolute;
+  top: 105%;
+  padding: 10px 0;
+
+  z-index: 3;
+  text-align: center;
+  overflow: hidden;
+  overflow-y: auto;
+
+  color: #8c8c8c;
+  background-color: $white-color;
+  border-radius: 10px;
+}
+
+.search-breeds-li {
+  padding: 5px;
+  cursor: pointer;
 }

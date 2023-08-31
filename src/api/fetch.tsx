@@ -5,8 +5,18 @@ import { toast } from 'react-toastify'
 
 type Dispatch<T> = React.Dispatch<React.SetStateAction<T>>
 
-export const getRandomCat = async (setRandomCat: Dispatch<Cat | undefined>) => {
-  const randomCat = await item.get<Cat[]>('images/search')
+const apiKey = import.meta.env.VITE_API_KEY
+
+export const getRandomCat = async (
+  setRandomCat: Dispatch<Cat | undefined>,
+  breed: string
+) => {
+  const randomCat = await item.get<Cat[]>(
+    `images/search?limit=1${breed ? `&breed_ids=${breed}` : ''}`
+  )
+
+  // console.log(randomCat);
+  
 
   setRandomCat(randomCat[0])
 
@@ -19,6 +29,16 @@ export const addToFavorites = async (id: string) => {
   if (catIsInFav) {
     toast("Cat's in Favourites, Meow 😻")
   }
+}
+
+export const deleteFromFavorites = async (id: string) => {
+  const catIsDeleted = await item.delete(`favourites/${id}`)
+
+  if (catIsDeleted) {
+    toast("Cat's removed from Favourites 😢")
+  }
+
+  return catIsDeleted
 }
 
 export const getFavourites = async (
@@ -38,6 +58,12 @@ export const getFavourites = async (
 
 export const removeFavCat = async (id: string) => {
   const randomCat = await item.delete(`favourites/${id}`)
+
+  //duplicated function + remove toast from somewhere
+
+  // if (randomCat) {
+  //   toast("Cat's is removed from Favourites 😢")
+  // }
 
   return randomCat || null
 }
@@ -78,13 +104,10 @@ export const getAllCats = async (
 }
 
 export const uploadCat = async (img: File) => {
-  const formData = new FormData();
-  formData.append('file', img);
-  
+  const formData = new FormData()
+  formData.append('file', img)
 
   const isCatUploaded = await item.post('images/upload', formData)
-
-  console.log('isCatUploaded', isCatUploaded)
 
   return isCatUploaded || null
 }

@@ -8,7 +8,7 @@ export interface ImpressionLog {
   id: string
   type: string
   status: string
-  time: Date
+  time: string
 }
 
 const initialState: History = {
@@ -24,15 +24,15 @@ export const historySlice = createSlice({
         id: action.payload,
         type: 'Likes',
         status: 'added',
-        time: new Date()
-      })
+        time: new Date().toISOString()
+      })      
     },
     addFav: (state: History, action: PayloadAction<string>) => {
       state.historyLog.push({
         id: action.payload,
         type: 'Favourites',
         status: 'added',
-        time: new Date()
+        time: new Date().toISOString()
       })
     },
 
@@ -41,7 +41,7 @@ export const historySlice = createSlice({
         id: action.payload,
         type: 'Dislikes',
         status: 'added',
-        time: new Date()
+        time: new Date().toISOString()
       })
     },
 
@@ -50,7 +50,7 @@ export const historySlice = createSlice({
         id: action.payload,
         type: 'Favourites',
         status: 'removed',
-        time: new Date()
+        time: new Date().toISOString()
       })
     }
   }

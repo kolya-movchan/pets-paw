@@ -19,7 +19,7 @@ export interface FavCat {
   created_at: string
   id: number
   image: Image
-  mage_id: string
+  image_id: string
   sub_id: string
   user_id: string
 }
@@ -74,7 +74,7 @@ export interface BreedsFromAPI {
 }
 
 export interface Breed {
-  id: string
+  id?: string
   name: string
   description: string
   temperament: string

@@ -69,7 +69,7 @@ export const Favourites = () => {
           <ul className="impressionHistory">
             {[...historyLog]
               .filter(cat => cat.type === 'Favourites')
-              .sort((b, a) => a.time.getTime() - b.time.getTime())
+              .sort((b, a) => new Date(a.time).getTime() -  new Date(b.time).getTime())
               .map(action => {
                 const { id, time, type, status } = action
                 return (

@@ -8,7 +8,6 @@
   visibility: visible;
 }
 
-
 .upload {
   transform: translateX(100%);
   transition: transform 0.3s;
@@ -76,6 +75,11 @@
     border: 2px dashed #fbe0dc;
     @extend %bg-img;
     cursor: pointer;
+
+    &--error {
+      border: 2px dashed #FF868E;
+      background-color: #FBE0DC;
+    }
   }
 
   &__info {
@@ -119,15 +123,22 @@
     background-color: $red-main-color;
   }
 
-  &__success-container {
+  &__status-container {
     padding: 20px;
     height: 60px;
     border-radius: 10px;
     background: $white-color;
-    background-image: url('../../../public/graphics/success-20.svg');
     background-position: left;
     background-repeat: no-repeat;
     background-position-x: 10px;
+
+    &--success {
+      background-image: url('../../../public/graphics/success-20.svg');
+    }
+
+    &--fail {
+      background-image: url('../../../public/graphics/error-20.svg');
+    }
   }
 
   &__success {
@@ -138,3 +149,5 @@
     line-height: 24px;
   }
 }
+
+

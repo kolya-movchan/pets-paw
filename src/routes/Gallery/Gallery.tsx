@@ -1,14 +1,22 @@
+import classNames from 'classnames'
 import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
 import { useSearchParams } from 'react-router-dom'
-import { addToFavorites } from '../../api/fetch'
+import {
+  addToFavorites,
+  deleteFromFavorites,
+  getFavourites,
+  removeFavCat
+} from '../../api/fetch'
+import { item } from '../../api/fetch-main'
 import { useAppDispatch } from '../../app/hooks'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
+import { SearchInput } from '../../components/SearchInput/SearchInput'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
 import { UploadModal } from '../../features/UploadModal/UploadModal'
-import { addFav } from '../../reducers/HistoryLog'
-import { BreedList, BreedsImage } from '../../types/Api'
+import { addFav, removeFav } from '../../reducers/HistoryLog'
+import { BreedList, BreedsImage, FavCat } from '../../types/Api'
 import {
   // getAllBreedsData,
   getCatBySelectedType,
@@ -21,8 +29,12 @@ export const Gallery = () => {
   const [allBreeds, setAllBreeds] = useState<BreedList[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [isUploadWindowOpened, setIsUploadWindowOpened] = useState(false)
+  const [favCatsIds, setFavCatsIds] = useState<string[]>([])
+  const [selectedBreed, setSelectedBreed] = useState<string>('')
 
   const [searchParams, setSearchParams] = useSearchParams()
+
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     settAllGalleryItems(
@@ -32,12 +44,7 @@ export const Gallery = () => {
       setSearchParams,
       searchParams
     )
-
-    // getSomeCats(setCatsForGallery, setIsLoading, setSearchParams, searchParams)
-    // getAllBreedsData(setAllBreeds, setIsLoading)
   }, [])
-
-  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (isUploadWindowOpened) {
@@ -47,9 +54,46 @@ export const Gallery = () => {
     }
   }, [isUploadWindowOpened])
 
+  const addCatIdToFav = async (id: string) => {
+    if (favCatsIds.includes(id)) {
+      try {
+        setFavCatsIds(favCatsIds.filter(catId => catId !== id))
+        dispatch(removeFav(id))
+        const favoritesFromAPI = await item.get<FavCat[]>('favourites')
+        const targetId = favoritesFromAPI.find(fav => fav.image_id === id)?.id
+
+        if (targetId) {
+          deleteFromFavorites(targetId.toString())
+        }
+      } catch {
+        setFavCatsIds([...favCatsIds, id])
+      }
+    } else {
+      try {
+        setFavCatsIds([...favCatsIds, id])
+        dispatch(addFav(id))
+        addToFavorites(id)
+      } catch {
+        setFavCatsIds(favCatsIds.filter(catId => catId !== id))
+      }
+    }
+  }
+  
+
   return (
     <div className="side-container-menu">
-      <TopNavBar />
+      <div className="top-nav">
+        <SearchInput
+          allBreeds={allBreeds}
+          setIsLoading={setIsLoading}
+          setSelectedBreed={setSelectedBreed}
+          setBreedsForGallery={setCatsForGallery}
+          setSearchParams={setSearchParams}
+          searchParams={searchParams}
+        />
+        <TopNavBar />
+      </div>
+
       <div className="voting side-inner-container">
         <div className="gallery-top-container">
           <LabelNav label={'gallery'} />
@@ -87,6 +131,7 @@ export const Gallery = () => {
             <div className="gallery__select-container">
               <span>type</span>
               <select
+                value={selectedBreed}
                 className="select gallery__select"
                 onChange={e =>
                   getCatBySelectedType(
@@ -187,13 +232,16 @@ export const Gallery = () => {
                     return (
                       <div className="cat" key={cat.id}>
                         <img src={cat.url} alt="cat-image" loading="lazy" />
-                        <div className="overlay">
+                        <div className="overlay" onClick={() => addCatIdToFav(cat.id)}>
                           <button
-                            className="overlay-bg overlay-bg--to-fav"
-                            onClick={() => {
-                              addToFavorites(cat.id)
-                              dispatch(addFav(cat.id))
-                            }}
+                            className={classNames(
+                              'overlay-bg overlay-bg--to-fav',
+                              {
+                                'overlay-bg--in-fav': favCatsIds.includes(
+                                  cat.id
+                                )
+                              }
+                            )}
                           ></button>
                         </div>
                       </div>

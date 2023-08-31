@@ -1,4 +1,5 @@
 import { blue } from '@mui/material/colors'
+import classNames from 'classnames'
 import React, { useEffect, useRef, useState } from 'react'
 import ReactLoading from 'react-loading'
 import { toast } from 'react-toastify'
@@ -36,8 +37,7 @@ export const UploadModal: React.FC<Props> = ({ onClose, isOpen }) => {
     if (selectedImage) {
       setIsCatUploaded({ sent: true, success: false })
       try {
-        const response = await uploadCat(selectedImage)
-        // console.log('Image uploaded successfully:', response)
+        await uploadCat(selectedImage)
 
         setIsCatUploaded({ sent: true, success: true })
 
@@ -50,97 +50,144 @@ export const UploadModal: React.FC<Props> = ({ onClose, isOpen }) => {
     setSelectedImage(null)
   }
 
-  // useEffect(() => {
-  //   document.body.style.overflow = 'hidden'
+  const handleImgDrop = async (event: React.DragEvent<HTMLLabelElement>) => {
+    event.preventDefault()
 
-  //   return () => {
-  //     document.body.style.overflow = 'auto'
-  //   }
-  // }, [])
+    const selectedFiles = event.dataTransfer.items
+
+    if (
+      selectedFiles[0].type === 'image/png' ||
+      selectedFiles[0].type === 'image/jpeg'
+    ) {
+      const file = selectedFiles[0].getAsFile()
+      
+      if (file) {
+        setSelectedImage(file)
+      }
+
+      setIsCatUploaded({ sent: false, success: false })
+
+      // if (file) {
+      //   setIsCatUploaded({ sent: true, success: false })
+      //   try {
+      //     await uploadCat(file)
+
+      //     setIsCatUploaded({ sent: true, success: true })
+
+      //     toast.success('Image uploaded successfully!')
+      //   } catch (error) {
+      //     setIsCatUploaded({ sent: true, success: false })
+      //   }
+      // }
+    }
+  }
+
+  useEffect(() => {
+    const preventDefaultHandler = (event: DragEvent) => {
+      event.preventDefault()
+    }
+
+    window.addEventListener('dragover', preventDefaultHandler)
+
+    return () => {
+      window.removeEventListener('dragover', preventDefaultHandler)
+    }
+  }, [])
 
   return (
-    // <div className="body-overlay">
-      <>
-        <button
-          className="upload__btn-close"
-          onClick={() => onClose(false)}
-        ></button>
+    <>
+      <button
+        className="upload__btn-close"
+        onClick={() => onClose(false)}
+      ></button>
 
-        <h2 className="upload__title title">Upload a .jpg or .png Cat Image</h2>
+      <h2 className="upload__title title">Upload a .jpg or .png Cat Image</h2>
 
-        <p className="upload__p">
-          Any uploads must comply with the{' '}
-          <a
-            href="https://thecatapi.com/privacy"
-            target="_blank"
-            className="upload__link"
-          >
-            upload guidelines
-          </a>{' '}
-          or face deletion.
-        </p>
+      <p className="upload__p">
+        Any uploads must comply with the{' '}
+        <a
+          href="https://thecatapi.com/privacy"
+          target="_blank"
+          className="upload__link"
+        >
+          upload guidelines
+        </a>{' '}
+        or face deletion.
+      </p>
 
-        <label className="upload__custom-label">
-          {!selectedImage && (
-            <div className="upload__info">
-              <span className="title">Drag here</span> your file or
-              <span className="title"> Click her</span> to upload
-            </div>
-          )}
-
-          <input
-            type="file"
-            className="upload__input"
-            accept=".jpg,.png"
-            onChange={handleChoosenImg}
-          />
-
-          {selectedImage && (
-            <div className="upload__preview">
-              <img
-                src={URL.createObjectURL(selectedImage)}
-                alt="cat image from device"
-                className="hero-img"
-              />
-            </div>
-          )}
-        </label>
-
-        <p className="upload__status">
-          {selectedImage
-            ? `Image File Name: ${selectedImage.name}`
-            : 'No file selected'}
-        </p>
-
-        {selectedImage && (
-          <button
-            className="upload__confirm title"
-            onClick={() => handleImgSubmit()}
-          >
-            upload photo
-          </button>
-        )}
-
-        {isCatUploaded.sent && isCatUploaded.success && (
-          <div className="upload__success-container">
-            <div className="upload__success">
-              Thanks for the Upload - Cat found!
-            </div>
+      <label
+        className={classNames('upload__custom-label', {
+          'upload__custom-label--error':
+            isCatUploaded.sent && !isCatUploaded.success && !selectedImage
+        })}
+        onDrop={handleImgDrop}
+        onDragOver={e => e.preventDefault()}
+      >
+        {!selectedImage && (
+          <div className="upload__info">
+            <span className="title">Drag here</span> your file or
+            <span className="title"> Click her</span> to upload
           </div>
         )}
-
-        {isCatUploaded.sent && selectedImage && (
-          <div style={{ margin: '10px auto' }}>
-            <ReactLoading
-              type={'spin'}
-              color={'#FF868E'}
-              height={25}
-              width={25}
-              delay={0}
+        <input
+          type="file"
+          className="upload__input"
+          accept=".jpg,.png"
+          onChange={handleChoosenImg}
+        />
+        {selectedImage && (
+          <div className="upload__preview">
+            <img
+              src={URL.createObjectURL(selectedImage)}
+              alt="cat image from device"
+              className="hero-img"
             />
           </div>
         )}
-      </>
-    // </div>
+      </label>
+
+      <p className="upload__status">
+        {selectedImage
+          ? `Image File Name: ${selectedImage.name}`
+          : 'No file selected'}
+      </p>
+
+      {selectedImage && (
+        <button
+          className="upload__confirm title"
+          onClick={() => handleImgSubmit()}
+        >
+          upload photo
+        </button>
+      )}
+
+      {isCatUploaded.sent && isCatUploaded.success && (
+        <div className="upload__status-container upload__status-container--success">
+          <div className="upload__success">
+            Thanks for the Upload - Cat found!
+          </div>
+        </div>
+      )}
+
+      {isCatUploaded.sent && !isCatUploaded.success && !selectedImage && (
+        <div className="upload__status-container upload__status-container--fail">
+          <div className="upload__success">
+            No Cat found - try a different one
+          </div>
+        </div>
+      )}
+
+      {isCatUploaded.sent && selectedImage && (
+        <div style={{ margin: '10px auto' }}>
+          <ReactLoading
+            type={'spin'}
+            color={'#FF868E'}
+            height={25}
+            width={25}
+            delay={0}
+          />
+        </div>
+      )}
+    </>
   )
 }

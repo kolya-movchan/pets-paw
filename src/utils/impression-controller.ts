@@ -17,9 +17,10 @@ type Dispatch<T> = React.Dispatch<React.SetStateAction<T>>
 export const addToLikes = (
   setRandomCat: Dispatch<Cat | undefined>,
   cat: Cat,
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
+  selectedBreed: string,
 ) => {
-  getRandomCat(setRandomCat)
+  getRandomCat(setRandomCat, selectedBreed)
   toast('You liked a cat 😎')
 
   const likesStorage: string = localStorage.getItem('likes') || ''
@@ -37,10 +38,11 @@ export const addToLikes = (
 export const addToDislikes = (
   setRandomCat: Dispatch<Cat | undefined>,
   cat: Cat,
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
+  selectedBreed: string,
 ) => {
   dispatch(addDislike(cat.id))
-  getRandomCat(setRandomCat)
+  getRandomCat(setRandomCat, selectedBreed)
   toast('You disliked a cat 😢')
 
   const disLikesStorage: string = localStorage.getItem('dislikes') || ''
@@ -56,10 +58,11 @@ export const addToDislikes = (
 export const addCatToFav = (
   setRandomCat: Dispatch<Cat | undefined>,
   id: string,
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
+  selectedBreed: string,
 ) => {
   addToFavorites(id)
-  getRandomCat(setRandomCat)
+  getRandomCat(setRandomCat, selectedBreed)
   dispatch(addFav(id))
 }
 
@@ -71,6 +74,6 @@ export const removeFromFavById = (
 ) => {
   removeFavCat(id.toString())
   setFavCats(favcats.filter(favcat => favcat.id !== id))
-  toast('Cat removed from Favourites')
+  toast('Cat\'s removed from Favourites')
   dispatch(removeFav(id.toString()))
 }

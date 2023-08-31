@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
+import { NotFound } from '../../components/NotFound/NotFound'
+import { SearchInput } from '../../components/SearchInput/SearchInput'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
 import { Breed as BreedsType, BreedsImage } from '../../types/Api'
 import {
@@ -12,6 +14,7 @@ import {
   sortDescending,
   updateLimit
 } from '../../utils/breeds-controller'
+import { BreedsInfo } from '../BreedsInfo/BreedsInfo'
 
 export const Breeds = () => {
   const [allBreeds, setAllBreeds] = useState<BreedsType[]>([])
@@ -21,14 +24,24 @@ export const Breeds = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const [searchParams, setSearchParams] = useSearchParams()
-  
+
   useEffect(() => {
     requestAllBreeds(setBreedsForGallery, setIsLoading, setAllBreeds)
   }, [])
 
   return (
     <div className="side-container-menu">
-      <TopNavBar />
+      <div className="top-nav">
+        <SearchInput
+          allBreeds={allBreeds}
+          setIsLoading={setIsLoading}
+          setSelectedBreed={setSelectedBreed}
+          setBreedsForGallery={setBreedsForGallery}
+          setSearchParams={setSearchParams}
+          searchParams={searchParams}
+        />
+        <TopNavBar />
+      </div>
       <div className="voting side-inner-container loader-parent">
         <div className="breeds-navbar-container">
           <LabelNav label={'breeds'} />
@@ -50,7 +63,7 @@ export const Breeds = () => {
               name="breeds-type"
               value={selectedBreed}
               className="select breeds-navbar__select breeds-navbar__select--breeds"
-              onChange={e => 
+              onChange={e =>
                 selectBreed(
                   setIsLoading,
                   setSelectedBreed,
@@ -58,7 +71,7 @@ export const Breeds = () => {
                   setSearchParams,
                   e.target.value,
                   limit,
-                  searchParams,
+                  searchParams
                 )
               }
               disabled={breedsForGallery.length < 1}
@@ -84,7 +97,7 @@ export const Breeds = () => {
                   setSearchParams,
                   e.target.value,
                   searchParams,
-                  setLimit,
+                  setLimit
                 )
 
                 selectBreed(
@@ -94,11 +107,9 @@ export const Breeds = () => {
                   setSearchParams,
                   selectedBreed,
                   e.target.value,
-                  searchParams,
+                  searchParams
                 )
-              }
-                
-              }
+              }}
             >
               <option value="5">Limit: 5</option>
               <option value="10">Limit: 10</option>
@@ -134,12 +145,10 @@ export const Breeds = () => {
                     key={breed.id}
                     className="cat"
                   >
-                    <img src={breed.url} alt="cat-image" loading='lazy' />
+                    <img src={breed.url} alt="cat-image" loading="lazy" />
 
                     <div className="overlay">
-                      <button
-                        className="overlay-bg overlay-bg--breed"
-                      >
+                      <button className="overlay-bg overlay-bg--breed">
                         {breed.name}
                       </button>
                     </div>
@@ -149,6 +158,8 @@ export const Breeds = () => {
             })}
           </div>
         )}
+
+        {!breedsForGallery.length && !isLoading && <NotFound />}
       </div>
     </div>
   )

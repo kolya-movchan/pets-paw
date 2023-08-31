@@ -13,11 +13,13 @@ type Dispatch<T> = React.Dispatch<React.SetStateAction<T>>
 type Props = {
   setRandomCat: Dispatch<Cat | undefined>
   randomCat: Cat
+  selectedBreed: string,
 }
 
 export const ImpressionController: React.FC<Props> = ({
   setRandomCat,
-  randomCat
+  randomCat,
+  selectedBreed,
 }) => {
   const dispatch = useAppDispatch()
   const [lastClickTime, setLastClickTime] = useState(0)
@@ -46,7 +48,7 @@ export const ImpressionController: React.FC<Props> = ({
       <div className='impression'>
         <button
           onClick={() =>
-            handleClick(() => addToLikes(setRandomCat, randomCat, dispatch))
+            handleClick(() => addToLikes(setRandomCat, randomCat, dispatch, selectedBreed))
           }
           className="impression-mode impression-mode--like"
           disabled={isDisabled}
@@ -56,7 +58,7 @@ export const ImpressionController: React.FC<Props> = ({
         <button
           className="impression-mode impression-mode--fav"
           onClick={() =>
-            handleClick(() => addCatToFav(setRandomCat, randomCat.id, dispatch))
+            handleClick(() => addCatToFav(setRandomCat, randomCat.id, dispatch, selectedBreed))
           }
           disabled={isDisabled}
         ></button>
@@ -65,7 +67,7 @@ export const ImpressionController: React.FC<Props> = ({
         <button
           className="impression-mode impression-mode--dislike"
           onClick={() =>
-            handleClick(() => addToDislikes(setRandomCat, randomCat, dispatch))
+            handleClick(() => addToDislikes(setRandomCat, randomCat, dispatch, selectedBreed))
           }
           disabled={isDisabled}
         ></button>

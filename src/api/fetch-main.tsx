@@ -45,13 +45,11 @@ function request<T>(
     }
   }
 
-  console.log(options, url)
+  console.log(BASE_URL + url)
 
   return wait(0)
     .then(() => fetch(BASE_URL + url, options))
     .then(response => {
-      console.log('response', response)
-
       if (!response.ok) {
         toast.error('Something went wrong')
 
