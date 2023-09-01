@@ -48,6 +48,6 @@ The development process is powered by various tools and dependencies:
 4. Open your browser and navigate to `http://localhost:3000`.
 5. Embrace your inner cat lover!
 
-Designed and developed with ❤️ by Kolya Movchan(https://github.com/kolya-movchan))
+Designed and developed with ❤️ by Kolya Movchan(https://github.com/kolya-movchan)
 
 Connect with me on [LinkedIn](https://www.linkedin.com/in/klmovchan/)
