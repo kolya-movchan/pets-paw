@@ -4,15 +4,12 @@ import ReactLoading from 'react-loading'
 import { useSearchParams } from 'react-router-dom'
 import {
   addToFavorites,
-  deleteFromFavorites,
-  getFavourites,
-  removeFavCat
+  deleteFromFavorites
 } from '../../api/fetch'
 import { item } from '../../api/fetch-main'
 import { useAppDispatch } from '../../app/hooks'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
-import { SearchInput } from '../../components/SearchInput/SearchInput'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
 import { UploadModal } from '../../features/UploadModal/UploadModal'
 import { addFav, removeFav } from '../../reducers/HistoryLog'
@@ -83,14 +80,7 @@ export const Gallery = () => {
   return (
     <div className="side-container-menu">
       <div className="top-nav">
-        <SearchInput
-          allBreeds={allBreeds}
-          setIsLoading={setIsLoading}
-          setSelectedBreed={setSelectedBreed}
-          setBreedsForGallery={setCatsForGallery}
-          setSearchParams={setSearchParams}
-          searchParams={searchParams}
-        />
+
         <TopNavBar />
       </div>
 

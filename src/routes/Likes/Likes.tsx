@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { LabelNav } from '../../components/LabelNav/LabelNav'
-import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
-import { Cat } from '../../types/Api'
 import { v4 as uuidv } from 'uuid'
-import '../../styles/grid.scss';
+import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
-import { SearchInput } from '../../components/SearchInput/SearchInput'
+import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
+import '../../styles/grid.scss'
+import { Cat } from '../../types/Api'
 
 
 export const Likes = () => {
@@ -22,14 +21,6 @@ export const Likes = () => {
   return (
     <div className="side-container-menu">
      <div className="top-nav">
-        {/* <SearchInput
-          // allBreeds={allBreeds}
-          // setIsLoading={setIsLoading}
-          // setSelectedBreed={setSelectedBreed}
-          // setBreedsForGallery={setBreedsForGallery}
-          // setSearchParams={setSearchParams}
-          // searchParams={searchParams}
-        /> */}
         <TopNavBar />
       </div>
       <div className="side-wrapper side-inner-container">

@@ -5,14 +5,12 @@ import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { DescriptionInfo } from '../../components/DescriptionInfo/DescriptionInfo'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
-import { SearchInput } from '../../components/SearchInput/SearchInput'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
 import { Breed, BreedList, BreedsImage } from '../../types/Api'
 import {
   getAllBreedsData,
   getBreedsByType,
-  getBreedsInfo,
-  requestAllBreeds
+  getBreedsInfo
 } from '../../utils/breeds-controller'
 
 export const BreedsInfo = () => {
@@ -51,15 +49,6 @@ export const BreedsInfo = () => {
   return (
     <div className="side-container-menu">
       <div className="top-nav">
-        <SearchInput
-          allBreeds={allBreeds}
-          setIsLoading={setIsLoading}
-          setSelectedBreed={setSelectedBreed}
-          setBreedsForGallery={setBreedsByType}
-          setSearchParams={setSearchParams}
-          searchParams={searchParams}
-          setBreedInfo={setBreedInfo}
-        />
         <TopNavBar />
       </div>
       <div className="voting side-inner-container loader-parent">

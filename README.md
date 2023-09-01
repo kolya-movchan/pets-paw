@@ -9,11 +9,7 @@ Check out the [**Live Demo**](https://kolya-movchan.github.io/pets-paw/) to see 
 </p>
 
 <p align="center">
-  <img src="https://github.com/kolya-movchan/pets-paw/raw/main/public/screenshots/breeds-cat.png" alt="pets-paw demo page" style="margin-bottom: 20px;">
-</p>
-
-<p align="center">
-  <img src="https://github.com/kolya-movchan/pets-paw/raw/main/public/screenshots/fav-cat.png" alt="pets-paw demo page" style="margin-bottom: 20px;">
+  <img src="https://github.com/kolya-movchan/pets-paw/raw/main/public/screenshots/breed-cat.png" alt="pets-paw demo page" style="margin-bottom: 20px;">
 </p>
 
 

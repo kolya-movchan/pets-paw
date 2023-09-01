@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { SearchInput } from '../../components/SearchInput/SearchInput'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
 import VotingBoard from '../../features/VotingBoard/VotingBoard'
-import { BreedsImage, Breed as BreedsType } from '../../types/Api'
+import { Breed as BreedsType, BreedsImage } from '../../types/Api'
 import { requestAllBreeds } from '../../utils/breeds-controller'
 
 export const Voting = () => {
@@ -23,14 +22,7 @@ export const Voting = () => {
   return (
     <div className="side-container-menu">
       <div className="top-nav">
-        <SearchInput
-          allBreeds={allBreeds}
-          setIsLoading={setIsLoading}
-          setSelectedBreed={setSelectedBreed}
-          setBreedsForGallery={setBreedsForGallery}
-          setSearchParams={setSearchParams}
-          searchParams={searchParams}
-        />
+
         <TopNavBar />
       </div>
 

@@ -71,7 +71,7 @@ body {
   display: flex;
   min-height: 100vh;
   justify-content: space-between;
-  padding: 20px;
+  padding: 30px;
   padding-left: 147px;
 }
 
@@ -125,6 +125,40 @@ body {
   width: 100%;
   min-height: 45vh;
   position: relative;
+}
+
+.contacts {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.contacts__link {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: #FF868E;
+  background-color: #fff;
+  border-radius: 10px;
+  color: #FF868E;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: 0.3s color;
+}
+.contacts__link:hover {
+  background-color: #FBE0DC;
+}
+
+.icon-dash {
+  height: 30px;
+  filter: invert(56%) sepia(76%) saturate(427%) hue-rotate(308deg) brightness(105%) contrast(100%);
+}
+.icon-dash--lg {
+  height: 25px;
 }
 
 .grid {
@@ -246,7 +280,7 @@ body {
   line-height: 58px;
 }
 .home-page__p {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   font-size: 20px;
   color: #8C8C8C;
 }
@@ -500,6 +534,7 @@ body {
   margin-bottom: 10px;
   width: 100%;
   display: flex;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -545,6 +580,7 @@ body {
   background-position: center;
 }
 .search-icon:hover {
+  cursor: pointer;
   background-color: #FF868E;
   background-image: url("/pets-paw/graphics/search-white-20.svg");
 }
@@ -629,6 +665,7 @@ body {
   font-size: 20px;
 }
 .nav__links {
+  margin-bottom: 50px;
   display: flex;
   gap: 16px;
 }
@@ -830,6 +867,12 @@ body {
 .impression-mode--dislike:hover {
   background-color: #fff1d9;
   background-image: url("/pets-paw/graphics/dislike-color-30.svg");
+}
+.impression-mode--disabled {
+  cursor: not-allowed;
+}
+.impression-mode--disabled:hover {
+  cursor: not-allowed;
 }
 
 .impressionHistory {

@@ -15,7 +15,7 @@ body {
   display: flex;
   min-height: 100vh;
   justify-content: space-between;
-  padding: 20px;
+  padding: 30px;
   padding-left: 147px;
 }
 
@@ -75,3 +75,41 @@ body {
   position: relative;
 }
 
+
+.contacts {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  &__link {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: $red-main-color;
+    background-color: $white-color;
+    border-radius: 10px;
+
+    color: $red-main-color;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s color;
+
+    &:hover {
+      background-color: $red-bg-color;
+    }
+  }
+}
+
+.icon-dash {
+  height: 30px;
+  filter: invert(56%) sepia(76%) saturate(427%) hue-rotate(308deg) brightness(105%) contrast(100%);
+
+  &--lg {
+    height: 25px;
+  }
+}

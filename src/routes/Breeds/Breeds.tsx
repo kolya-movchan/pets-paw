@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
-import { SearchInput } from '../../components/SearchInput/SearchInput'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
 import { Breed as BreedsType, BreedsImage } from '../../types/Api'
 import {
@@ -14,7 +13,6 @@ import {
   sortDescending,
   updateLimit
 } from '../../utils/breeds-controller'
-import { BreedsInfo } from '../BreedsInfo/BreedsInfo'
 
 export const Breeds = () => {
   const [allBreeds, setAllBreeds] = useState<BreedsType[]>([])
@@ -32,14 +30,6 @@ export const Breeds = () => {
   return (
     <div className="side-container-menu">
       <div className="top-nav">
-        <SearchInput
-          allBreeds={allBreeds}
-          setIsLoading={setIsLoading}
-          setSelectedBreed={setSelectedBreed}
-          setBreedsForGallery={setBreedsForGallery}
-          setSearchParams={setSearchParams}
-          searchParams={searchParams}
-        />
         <TopNavBar />
       </div>
       <div className="voting side-inner-container loader-parent">

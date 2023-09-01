@@ -50,13 +50,19 @@ export const ImpressionController: React.FC<Props> = ({
           onClick={() =>
             handleClick(() => addToLikes(setRandomCat, randomCat, dispatch, selectedBreed))
           }
-          className="impression-mode impression-mode--like"
+          className={classNames(
+            "impression-mode impression-mode--like",
+            {'impression-mode--disabled': isDisabled}
+          )}
           disabled={isDisabled}
         ></button>
       </div>
       <div className="impression">
         <button
-          className="impression-mode impression-mode--fav"
+         className={classNames(
+          "impression-mode impression-mode--fav",
+          {'impression-mode--disabled': isDisabled}
+        )}
           onClick={() =>
             handleClick(() => addCatToFav(setRandomCat, randomCat.id, dispatch, selectedBreed))
           }
@@ -65,7 +71,10 @@ export const ImpressionController: React.FC<Props> = ({
       </div>
       <div className="impression">
         <button
-          className="impression-mode impression-mode--dislike"
+         className={classNames(
+          "impression-mode impression-mode--dislike",
+          {'impression-mode--disabled': isDisabled}
+        )}
           onClick={() =>
             handleClick(() => addToDislikes(setRandomCat, randomCat, dispatch, selectedBreed))
           }

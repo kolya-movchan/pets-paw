@@ -58,6 +58,14 @@
       background-image: url('/pets-paw/graphics/dislike-color-30.svg');
     }
   }
+
+  &--disabled {
+    cursor: not-allowed;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
 }
 
 .impressionHistory {

@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
 import { v4 as uuidv } from 'uuid'
@@ -7,11 +6,10 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
+import { ImpressionLog } from '../../reducers/HistoryLog'
 import { FavCat } from '../../types/Api'
-import { removeFromFavById } from '../../utils/impression-controller'
-import { History, ImpressionLog } from '../../reducers/HistoryLog'
 import { getCurrentTime } from '../../utils/calculations'
-import { SearchInput } from '../../components/SearchInput/SearchInput'
+import { removeFromFavById } from '../../utils/impression-controller'
 
 export const Favourites = () => {
   const [favsCats, setFavCats] = useState<FavCat[]>([])
@@ -28,14 +26,6 @@ export const Favourites = () => {
   return (
     <div className="side-container-menu">
        <div className="top-nav">
-        {/* <SearchInput
-          // allBreeds={allBreeds}
-          // setIsLoading={setIsLoading}
-          // setSelectedBreed={setSelectedBreed}
-          // setBreedsForGallery={setBreedsForGallery}
-          // setSearchParams={setSearchParams}
-          // searchParams={searchParams}
-        /> */}
         <TopNavBar />
       </div>
       <div className="voting side-inner-container loader-parent">

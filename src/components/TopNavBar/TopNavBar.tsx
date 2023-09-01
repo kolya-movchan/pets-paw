@@ -1,9 +1,6 @@
 import classNames from 'classnames'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { NavLinkItem } from '../NavLinkItem/NavLinkItem'
-import { SearchInput } from '../SearchInput/SearchInput'
-import { Breed as BreedsType } from '../../types/Api'
 
 export const TopNavBar = () => {
   const navLinks = [

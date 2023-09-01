@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { v4 as uuidv } from 'uuid'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
 import { Cat } from '../../types/Api'
-import { v4 as uuidv } from 'uuid'
-import { SearchInput } from '../../components/SearchInput/SearchInput'
 
 export const Dislikes = () => {
   const [dislikedCatsFromStorage, setDislikedCatsFromStorage] = useState<Cat[]>(
@@ -24,14 +23,7 @@ export const Dislikes = () => {
   return (
     <div className="side-container-menu">
       <div className="top-nav">
-        {/* <SearchInput
-        // allBreeds={allBreeds}
-        // setIsLoading={setIsLoading}
-        // setSelectedBreed={setSelectedBreed}
-        // setBreedsForGallery={setBreedsForGallery}
-        // setSearchParams={setSearchParams}
-        // searchParams={searchParams}
-        /> */}
+
         <TopNavBar />
       </div>
       <div className="voting side-inner-container">
