@@ -2,12 +2,10 @@ import classNames from 'classnames'
 import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
 import { useSearchParams } from 'react-router-dom'
-import {
-  addToFavorites,
-  deleteFromFavorites
-} from '../../api/fetch'
+import { addToFavorites, deleteFromFavorites } from '../../api/fetch'
 import { item } from '../../api/fetch-main'
 import { useAppDispatch } from '../../app/hooks'
+import { CatImage } from '../../components/CatImage/CatImage'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
@@ -15,9 +13,7 @@ import { UploadModal } from '../../features/UploadModal/UploadModal'
 import { addFav, removeFav } from '../../reducers/HistoryLog'
 import { BreedList, BreedsImage, FavCat } from '../../types/Api'
 import {
-  // getAllBreedsData,
   getCatBySelectedType,
-  // getSomeCats,
   settAllGalleryItems
 } from '../../utils/breeds-controller'
 
@@ -75,12 +71,10 @@ export const Gallery = () => {
       }
     }
   }
-  
 
   return (
     <div className="side-container-menu">
       <div className="top-nav">
-
         <TopNavBar />
       </div>
 
@@ -221,8 +215,14 @@ export const Gallery = () => {
                   if (cat.url) {
                     return (
                       <div className="cat" key={cat.id}>
-                        <img src={cat.url} alt="cat-image" loading="lazy" />
-                        <div className="overlay" onClick={() => addCatIdToFav(cat.id)}>
+                        <CatImage
+                          src={cat.url}
+                          placeholderSrc={'./home-page/plc.png'}
+                        />
+                        <div
+                          className="overlay"
+                          onClick={() => addCatIdToFav(cat.id)}
+                        >
                           <button
                             className={classNames(
                               'overlay-bg overlay-bg--to-fav',

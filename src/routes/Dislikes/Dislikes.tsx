@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { v4 as uuidv } from 'uuid'
+import { CatImage } from '../../components/CatImage/CatImage'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
@@ -23,7 +24,6 @@ export const Dislikes = () => {
   return (
     <div className="side-container-menu">
       <div className="top-nav">
-
         <TopNavBar />
       </div>
       <div className="voting side-inner-container">
@@ -34,7 +34,10 @@ export const Dislikes = () => {
             {dislikedCatsFromStorage?.map((cat, index) => {
               return (
                 <div key={uuidv()} className={`cat${index + 1} cat`}>
-                  <img src={cat.url} alt="cat-image" />
+                  <CatImage
+                    src={cat.url}
+                    placeholderSrc={'./home-page/plc.png'}
+                  />
                 </div>
               )
             })}

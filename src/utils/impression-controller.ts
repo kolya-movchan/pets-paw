@@ -1,14 +1,12 @@
-import { FavCat } from './../types/Api'
-import { AppDispatch } from './../app/store'
 import { toast } from 'react-toastify'
+import { historySlice, removeFav } from '../reducers/HistoryLog'
 import { Cat } from '../types/Api'
 import {
-  addToFavorites,
-  getFavourites,
-  getRandomCat,
+  addToFavorites, getRandomCat,
   removeFavCat
 } from './../api/fetch'
-import { historySlice, removeFav } from '../reducers/HistoryLog'
+import { AppDispatch } from './../app/store'
+import { FavCat } from './../types/Api'
 
 const { addLike, addFav, addDislike } = historySlice.actions
 
@@ -19,8 +17,9 @@ export const addToLikes = (
   cat: Cat,
   dispatch: AppDispatch,
   selectedBreed: string,
+  setIsDisabled: Dispatch<boolean>
 ) => {
-  getRandomCat(setRandomCat, selectedBreed)
+  getRandomCat(setRandomCat, selectedBreed, setIsDisabled)
   toast('You liked a cat 😎')
 
   const likesStorage: string = localStorage.getItem('likes') || ''
@@ -40,9 +39,10 @@ export const addToDislikes = (
   cat: Cat,
   dispatch: AppDispatch,
   selectedBreed: string,
+  setIsDisabled: Dispatch<boolean>
 ) => {
   dispatch(addDislike(cat.id))
-  getRandomCat(setRandomCat, selectedBreed)
+  getRandomCat(setRandomCat, selectedBreed, setIsDisabled)
   toast('You disliked a cat 😢')
 
   const disLikesStorage: string = localStorage.getItem('dislikes') || ''
@@ -60,11 +60,10 @@ export const addCatToFav = (
   id: string,
   dispatch: AppDispatch,
   selectedBreed: string,
+  setIsDisabled: Dispatch<boolean>
 ) => {
-  console.log('id', id);
-  
   addToFavorites(id)
-  getRandomCat(setRandomCat, selectedBreed)
+  getRandomCat(setRandomCat, selectedBreed, setIsDisabled)
   dispatch(addFav(id))
 }
 
@@ -76,6 +75,6 @@ export const removeFromFavById = (
 ) => {
   removeFavCat(id.toString())
   setFavCats(favcats.filter(favcat => favcat.id !== id))
-  toast('Cat\'s removed from Favourites')
+  toast("Cat's removed from Favourites")
   dispatch(removeFav(id.toString()))
 }

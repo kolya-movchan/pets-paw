@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
 import { Link, useSearchParams } from 'react-router-dom'
+import { CatImage } from '../../components/CatImage/CatImage'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
@@ -13,6 +14,7 @@ import {
   sortDescending,
   updateLimit
 } from '../../utils/breeds-controller'
+import Compressor from 'compressorjs'
 
 export const Breeds = () => {
   const [allBreeds, setAllBreeds] = useState<BreedsType[]>([])
@@ -128,14 +130,17 @@ export const Breeds = () => {
         {breedsForGallery.length > 1 && !isLoading && (
           <div className="grid">
             {breedsForGallery?.map(breed => {
-              if (breed?.url) {
+              if (breed.url) {
                 return (
                   <Link
                     to={`/breeds/${generateSlug(breed.id)}?limit=${limit}`}
                     key={breed.id}
                     className="cat"
                   >
-                    <img src={breed.url} alt="cat-image" loading="lazy" />
+                    <CatImage
+                      src={breed.url}
+                      placeholderSrc={'./home-page/plc.png'}
+                    />
 
                     <div className="overlay">
                       <button className="overlay-bg overlay-bg--breed">

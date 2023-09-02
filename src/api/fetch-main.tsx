@@ -4,9 +4,6 @@ const BASE_URL = 'https://api.thecatapi.com/v1/'
 const userID = '890a8f581ddcffe2a0dee4227943b8a3'
 const apiKey = import.meta.env.VITE_API_KEY
 
-console.log('apiKey', apiKey);
-
-
 function wait(delay: number) {
   return new Promise(resolve => {
     setTimeout(resolve, delay)
@@ -43,14 +40,10 @@ function request<T>(
   if (data) {
     if (isFormData(data)) {
       options.body = data
-    } else {
-      console.log('data', data);
-      
+    } else {      
       options.body = JSON.stringify({ ...data, sub_id: userID })
     }
   }
-
-  console.log(BASE_URL + url, data, options.headers)
 
   return wait(0)
     .then(() => fetch(BASE_URL + url, options))

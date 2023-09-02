@@ -13,17 +13,14 @@ export const CustomLink: React.FC<Props> = ({ to, iconSrc, text }) => {
       to={to}
       target="_blank"
       className={classNames('contacts__link ', {
-        // 'nav__link--dark-mode': darkMode,
       })}
     >
       <img
         src={iconSrc}
         alt={`${text} icon`}
         className={classNames('icon-dash', {
-          // 'icon-dash--dark-mode': darkMode,
         })}
       />
-      {/* {text} */}
     </Link>
   )
 }

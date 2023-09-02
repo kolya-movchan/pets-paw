@@ -273,5 +273,3 @@ export const getCatBySelectedType = async (
 
   setIsLoading(false)
 }
-
-// export getAllBred

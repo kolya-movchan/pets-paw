@@ -3,6 +3,7 @@ import ReactLoading from 'react-loading'
 import { v4 as uuidv } from 'uuid'
 import { getFavourites } from '../../api/fetch'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { CatImage } from '../../components/CatImage/CatImage'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
 import { TopNavBar } from '../../components/TopNavBar/TopNavBar'
@@ -54,7 +55,10 @@ export const Favourites = () => {
                     removeFromFavById(cat.id, favsCats, setFavCats, dispatch)
                   }
                 >
-                  <img src={cat.image.url} alt="cat-image" />
+                   <CatImage
+                    src={cat.image.url}
+                    placeholderSrc={'./home-page/plc.png'}
+                  />
                   <div className="overlay">
                     <button className="overlay-bg overlay-bg--fav"></button>
                   </div>

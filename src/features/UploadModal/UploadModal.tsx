@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import ReactLoading from 'react-loading'
 import { toast } from 'react-toastify'
 import { uploadCat } from '../../api/fetch'
-// import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 type Props = {
   onClose: (status: boolean) => void
@@ -66,19 +65,6 @@ export const UploadModal: React.FC<Props> = ({ onClose, isOpen }) => {
       }
 
       setIsCatUploaded({ sent: false, success: false })
-
-      // if (file) {
-      //   setIsCatUploaded({ sent: true, success: false })
-      //   try {
-      //     await uploadCat(file)
-
-      //     setIsCatUploaded({ sent: true, success: true })
-
-      //     toast.success('Image uploaded successfully!')
-      //   } catch (error) {
-      //     setIsCatUploaded({ sent: true, success: false })
-      //   }
-      // }
     }
   }
 

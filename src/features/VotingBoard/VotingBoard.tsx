@@ -15,22 +15,12 @@ type Props = {
 
 const VotingBoard: React.FC<Props> = ({ selectedBreed }) => {
   const [randomCat, setRandomCat] = useState<Cat>()
-  // const [catsWithBreed, setCatsWithBreed] = useState<string[]>([])
 
   let impressionHistory = useAppSelector<ImpressionLog[]>(state => state.historyLog.historyLog)
 
   useEffect(() => {
     getRandomCat(setRandomCat, selectedBreed)
   }, [selectedBreed])
-
-  // useEffect(() => {
-  //   if (randomCat) {
-  //     setCatsWithBreed([...catsWithBreed, randomCat?.id])
-  //   }
-
-  // }, [randomCat])
-
-  // console.log(randomCat);
   
 
   if (impressionHistory) {

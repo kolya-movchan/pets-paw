@@ -17,8 +17,6 @@ export const Voting = () => {
     requestAllBreeds(setBreedsForGallery, setIsLoading, setAllBreeds)
   }, [])
 
-  // console.log(selectedBreed);
-
   return (
     <div className="side-container-menu">
       <div className="top-nav">

@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import React, { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
 import { useLocation, useParams, useSearchParams } from 'react-router-dom'
+import { CatImage } from '../../components/CatImage/CatImage'
 import { DescriptionInfo } from '../../components/DescriptionInfo/DescriptionInfo'
 import { LabelNav } from '../../components/LabelNav/LabelNav'
 import { NotFound } from '../../components/NotFound/NotFound'
@@ -25,8 +26,6 @@ export const BreedsInfo = () => {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
 
-  console.log('breedsByType', breedsByType)
-
   const selectPhotoByPick = (index: number) => {
     setCurrentPhotoIndex(index)
   }
@@ -42,9 +41,6 @@ export const BreedsInfo = () => {
 
     getAllBreedsData(setAllBreeds, setIsLoading)
   }, [])
-
-  console.log('allBreeds', allBreeds);
-  
 
   return (
     <div className="side-container-menu">
@@ -73,10 +69,11 @@ export const BreedsInfo = () => {
           <>
             <div className="voting-hero-container loader-parent">
               <div className="voting-hero breed-parent">
-                <img
-                  src={breedsByType[currentPhotoIndex].url}
+                <CatImage
+                  src={breedsByType[currentPhotoIndex].url as string}
+                  placeholderSrc={'./home-page/plc.png'}
+                  style={{ borderRadius: '20px' }}
                   className="hero-img"
-                  alt=""
                 />
               </div>
 

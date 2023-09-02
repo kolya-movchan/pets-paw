@@ -9,14 +9,17 @@ const apiKey = import.meta.env.VITE_API_KEY
 
 export const getRandomCat = async (
   setRandomCat: Dispatch<Cat | undefined>,
-  breed: string
+  breed: string,
+  setIsDisabled?: Dispatch<boolean>
 ) => {
   const randomCat = await item.get<Cat[]>(
     `images/search?limit=1${breed ? `&breed_ids=${breed}` : ''}`
   )
-
-  // console.log(randomCat);
-  
+  if (setIsDisabled) {
+    setTimeout(() => {
+      setIsDisabled(false)
+    }, 100);
+  }
 
   setRandomCat(randomCat[0])
 
@@ -58,12 +61,6 @@ export const getFavourites = async (
 
 export const removeFavCat = async (id: string) => {
   const randomCat = await item.delete(`favourites/${id}`)
-
-  //duplicated function + remove toast from somewhere
-
-  // if (randomCat) {
-  //   toast("Cat's is removed from Favourites 😢")
-  // }
 
   return randomCat || null
 }
