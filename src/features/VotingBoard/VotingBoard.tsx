@@ -28,7 +28,7 @@ const VotingBoard: React.FC<Props> = ({ selectedBreed }) => {
   }
 
   return (
-    <div className="voting side-inner-container loader-parent">
+    <div className="voting side-inner-container">
       <LabelNav label="voting" />
       <div className="voting-interaction">
         <VotingHero randomCat={randomCat} setRandomCat={setRandomCat} selectedBreed={selectedBreed} />

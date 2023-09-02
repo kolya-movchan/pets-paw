@@ -14,7 +14,6 @@ import {
   sortDescending,
   updateLimit
 } from '../../utils/breeds-controller'
-import Compressor from 'compressorjs'
 
 export const Breeds = () => {
   const [allBreeds, setAllBreeds] = useState<BreedsType[]>([])

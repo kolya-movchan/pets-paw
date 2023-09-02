@@ -1,12 +1,14 @@
+import { FavCat } from './../types/Api'
+import { AppDispatch } from './../app/store'
 import { toast } from 'react-toastify'
-import { historySlice, removeFav } from '../reducers/HistoryLog'
 import { Cat } from '../types/Api'
 import {
-  addToFavorites, getRandomCat,
+  addToFavorites,
+  getFavourites,
+  getRandomCat,
   removeFavCat
 } from './../api/fetch'
-import { AppDispatch } from './../app/store'
-import { FavCat } from './../types/Api'
+import { historySlice, removeFav } from '../reducers/HistoryLog'
 
 const { addLike, addFav, addDislike } = historySlice.actions
 
@@ -69,12 +71,12 @@ export const addCatToFav = (
 
 export const removeFromFavById = (
   id: number,
-  favcats: FavCat[],
-  setFavCats: Dispatch<FavCat[]>,
+  // favcats: FavCat[],
+  // setFavCats: Dispatch<FavCat[]>,
   dispatch: AppDispatch
 ) => {
   removeFavCat(id.toString())
-  setFavCats(favcats.filter(favcat => favcat.id !== id))
+  // setFavCats(favcats.filter(favcat => favcat.id !== id))
   toast("Cat's removed from Favourites")
   dispatch(removeFav(id.toString()))
 }

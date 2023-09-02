@@ -21,7 +21,7 @@ export const VotingHero: React.FC<Props> = ({
 
   return (
     <>
-      <div className="voting-hero-container ">
+      <div className="voting-hero-container loader-parent">
         {randomCat ? (
           <>
             <div className="voting-hero">
